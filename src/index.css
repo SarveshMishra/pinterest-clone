@@ -1,1 +1,11 @@
+/* Global Theme CSS add as per requirement */
+body {
+	margin: 0;
+}
+.color {
+	color: #fff;
+}
 
+.font {
+	font-family: "Roboto", sans-serif;
+}
