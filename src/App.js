@@ -1,11 +1,10 @@
-import './App.css';
-
+import {Homepage} from "./routes/Homepage";
 function App() {
-  return (
-    <div className="App">
-     Hello World
-    </div>
-  );
+	return (
+		<>
+			<Homepage />
+		</>
+	);
 }
 
 export default App;
