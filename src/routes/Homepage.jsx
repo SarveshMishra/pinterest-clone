@@ -4,7 +4,6 @@ import React from "react";
 import "animate.css";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
 const Button = styled.button`
 	background-color: ${(props) => (props.signup ? "#EFEFEF" : "#E60023")};
 	border-radius: 20px;
@@ -14,15 +13,49 @@ const Button = styled.button`
 	font-size: 16px;
 	font-weight: bold;
 	cursor: pointer;
-  width: 100px;
-  margin: 5px;
+	width: 100px;
+	margin: 5px;
 
 	&:hover {
 		background-color: ${(props) => (props.signup ? "#ddd" : "#a3081a;")};
 	}
 `;
+const colors = ["#C28B00", "#0076D3", "#518C7B", "#507A57"];
+const delay = 2500;
 
 export const Homepage = () => {
+	const [index, setIndex] = React.useState(0);
+	const [text, setText] = React.useState("eat");
+	const timeoutRef = React.useRef(null);
+
+	function resetTimeout() {
+		if (timeoutRef.current) {
+			clearTimeout(timeoutRef.current);
+		}
+	}
+
+	React.useEffect(() => {
+		resetTimeout();
+		timeoutRef.current = setTimeout(
+			() =>
+				setIndex((prevIndex) =>
+					prevIndex === colors.length - 1 ? 0 : prevIndex + 1
+				),
+			delay
+		);
+
+		const text_arr = [
+			"chai time snacks idea",
+			"home decor idea",
+			"outfit idea",
+			"DIY idea",
+		];
+		setText(text_arr[index]);
+		return () => {
+			resetTimeout();
+		};
+	}, [index]);
+
 	return (
 		<div>
 			<nav>
@@ -30,7 +63,6 @@ export const Homepage = () => {
 					<div className="img">
 						<svg
 							fill="#E60023"
-							class="gUZ lZJ U9O kVc"
 							height="32"
 							width="32"
 							viewBox="0 0 24 24"
@@ -69,8 +101,31 @@ export const Homepage = () => {
 
 			<div className="headline">
 				<div className="heading">Get Your Next</div>
-				<div className="creativity">chai time snacks idea</div>
-				<div className="bullets"></div>
+				<div className="slideshow">
+					<div
+						className="slideshowSlider fade"
+						style={{ transform: `translate3D(${-index * 100}%, 0, 0)` }}
+					>
+						{colors.map((color, index) => (
+							<div className="slide" style={{ color }} key={index}>
+								{text}
+							</div>
+						))}
+					</div>
+
+					<div className="slideshowDots">
+						{colors.map((backgroundColor, idx) => (
+							<div
+								key={idx}
+								className={`slideshowDot${index === idx ? " active" : ""}`}
+								onClick={() => {
+									setIndex(idx);
+								}}
+								// style={{ backgroundColor }}
+							></div>
+						))}
+					</div>
+				</div>
 			</div>
 		</div>
 	);
