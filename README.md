@@ -6,7 +6,7 @@ Pinterest is an image sharing and social media service designed to enable saving
 
 # Clone Website Address
 
-- [1mg-clone](https://pinterest.pages.dev/)
+- [Pinterest-clone](https://pinterest.pages.dev/)
 - [Json Database](https://simple-json-db.herokuapp.com/)
 - [Database GitHub](https://github.com/SarveshMishra/json-server)
 # Team Members
