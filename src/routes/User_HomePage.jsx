@@ -1,8 +1,9 @@
 // User Homepage After Login
 import ImageCard from "../components/ImageCard/ImageCard"
 import React from 'react'
-import "../css/homepage.css"
+import "../css/user_homepage.css"
 export const User_HomePage = () => {
+ 
 
   var list1=[
     {
