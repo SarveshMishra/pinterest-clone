@@ -5,6 +5,27 @@
     width: 16rem;
     height: auto;
 }
+
+div.top_right {
+    display: none;
+}
+
+div.container:hover div.top_right {
+    display: flex;
+}
+
+
+div.bottom_right {
+    display: none;
+   
+     
+}
+
+div.container:hover div.bottom_right {
+    display: flex;
+ }
+
+ 
 .container .main_image{
  border-radius: 20px;
  width: 100%;
@@ -20,6 +41,7 @@
     color: white;
     font-weight: 700;
     font-family: "Roboto", sans-serif;
+    
 }
 
   
@@ -37,7 +59,7 @@
 .bottom_right{
     position: absolute;
     bottom: 8px;
-    right: 16px;
+    right: 16px; 
 }
 .bottom_right img{
     height: 30px;
@@ -58,11 +80,3 @@
     display: flex;
     width: 4rem;
 }
-
-
-  /* .centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  } */
