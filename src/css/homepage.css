@@ -1,1 +1,77 @@
 /* Local CSS for specific page */
+nav {
+	display: flex;
+	height: 40px;
+	align-items: center;
+	padding: 1.5%;
+	justify-content: space-between;
+}
+.logo {
+	flex-direction: row;
+}
+.img {
+	display: flex;
+	align-items: center;
+}
+.logo-text {
+	color: #e60023;
+	font-weight: 700;
+	font-size: 20px;
+	margin-left: 5px;
+}
+.right-side {
+	width: 35%;
+	display: flex;
+	align-items: center;
+	justify-self: space-between;
+}
+
+.link-list {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	list-style: none;
+	padding: 5% 2%;
+}
+
+.link a {
+	color: black;
+	text-decoration: none;
+	font-weight: 700;
+}
+.link a:hover {
+	text-decoration: underline;
+}
+.btn {
+	margin: 0 10px;
+	width: 120px;
+}
+
+/* Headline */
+.headline {
+	
+	margin-top: 3%;
+}
+.heading {
+	margin: 2px;
+	font-size: 60px;
+	font-weight: 600;
+	box-sizing: border-box;
+	text-align: center;
+}
+.creativity {
+	font-size: 60px;
+	margin: 0px;
+	font-weight: 600;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	left: 0px;
+	color: rgb(81, 140, 123);
+	/* transform: translateY(-40px); */
+	opacity: 1;
+	z-index: 2;
+}
