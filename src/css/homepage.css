@@ -62,6 +62,8 @@ nav {
 	font-weight: 600;
 	box-sizing: border-box;
 	text-align: center;
+	z-index: 3;
+	position: relative;
 }
 /* .creativity {
 	font-size: 60px;
@@ -188,4 +190,11 @@ nav {
 
 .slideshowDot.fourth {
 	background-color: #507A57;
+}
+
+
+/* Grid */
+.homepage-grid{
+	
+	overflow-x: hidden;
 }
