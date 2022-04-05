@@ -7,3 +7,10 @@ export const isLogIn = (flag) => {
 		flag: flag,
 	};
 };
+
+export const isLogOut = () => {
+	return {
+		type: LOG_OUT,
+		flag: "false",
+	};
+};
