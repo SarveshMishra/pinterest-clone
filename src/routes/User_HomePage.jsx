@@ -7,14 +7,15 @@ export const User_HomePage = () => {
 
   var list1=[
     {
-      image_url:"https://i.pinimg.com/236x/86/5a/62/865a62ce02bb38bd88851269a41959d1.jpg"
-    },
-    {
-      image_url:"https://i.pinimg.com/736x/77/00/44/77004487bd4a27aba64a4fadce35732b.jpg"
+      image_url:"https://i.pinimg.com/236x/26/21/df/2621df15c7d12b5cac85517887e8eca9.jpg"
     },
     {
       image_url:"https://i.pinimg.com/236x/16/7f/e6/167fe63d4a008f8957c8e9406953af1f.jpg"
     },
+    {
+      image_url:"https://i.pinimg.com/736x/77/00/44/77004487bd4a27aba64a4fadce35732b.jpg"
+    },
+    
     {
       image_url:"https://i.pinimg.com/236x/81/df/69/81df699b25ca1242a796f51397263d1a.jpg"
     },
