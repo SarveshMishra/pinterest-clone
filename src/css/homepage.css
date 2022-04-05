@@ -1,4 +1,5 @@
 /* Local CSS for specific page */
+
 nav {
 	display: flex;
 	height: 40px;
@@ -198,3 +199,4 @@ nav {
 	
 	overflow-x: hidden;
 }
+
