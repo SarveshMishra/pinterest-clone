@@ -25,7 +25,7 @@ const delay = 2500;
 
 export const Homepage = () => {
 	const [index, setIndex] = React.useState(0);
-	const [text, setText] = React.useState("eat");
+	const [text, setText] = React.useState("");
 	const timeoutRef = React.useRef(null);
 
 	function resetTimeout() {
@@ -103,7 +103,7 @@ export const Homepage = () => {
 				<div className="heading">Get Your Next</div>
 				<div className="slideshow">
 					<div
-						className="slideshowSlider fade"
+						className="slideshowSlider"
 						style={{ transform: `translate3D(${-index * 100}%, 0, 0)` }}
 					>
 						{colors.map((color, index) => (
@@ -114,14 +114,23 @@ export const Homepage = () => {
 					</div>
 
 					<div className="slideshowDots">
-						{colors.map((backgroundColor, idx) => (
+						{colors.map((_, idx) => (
 							<div
 								key={idx}
-								className={`slideshowDot${index === idx ? " active" : ""}`}
+								className={`slideshowDot${
+									index === idx && idx === 0
+										? " first"
+										: index === idx && idx === 1
+										? " second"
+										: index === idx && idx === 2
+										? " third"
+										: index === idx && idx === 3
+										? " fourth"
+										: ""
+								}`}
 								onClick={() => {
 									setIndex(idx);
 								}}
-								// style={{ backgroundColor }}
 							></div>
 						))}
 					</div>
