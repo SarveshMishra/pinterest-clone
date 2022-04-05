@@ -113,11 +113,11 @@ nav {
 
 /* Fading animation */
 .fade {
-	animation-name: fade, move;
+	animation-name: fadeUP, move;
 	animation-duration: 1.5s;
 }
 
-@keyframes fade {
+@keyframes fadeUP {
 	from {
 		opacity: 1;
 	}
@@ -143,7 +143,7 @@ nav {
 
 .slideshowSlider {
 	white-space: nowrap;
-	transition: ease 1000ms;
+	
 }
 
 .slide {
@@ -151,7 +151,8 @@ nav {
 	text-align: center;
 	height: 100px;
 	width: 100%;
-	border-radius: 40px;
+	animation-name: fadeUP, move;
+	animation-duration: 1.5s;
 	font-size: 60px;
 }
 
@@ -173,6 +174,18 @@ nav {
 	background-color: #c4c4c4;
 }
 
-.slideshowDot.active {
-	background-color: #6a0dad;
+.slideshowDot.first {
+	background-color: #C28B00;
+}
+
+.slideshowDot.second {
+	background-color: #0076D3;
+}
+
+.slideshowDot.third {
+	background-color: #518C7B;
+}
+
+.slideshowDot.fourth {
+	background-color: #507A57;
 }
