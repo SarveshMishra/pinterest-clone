@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { isLogIn } from "../../redux/global_data/action";
 import {
 	Form,
 	HeadText,
@@ -7,9 +9,30 @@ import {
 	Overlay,
 	Text,
 	Input,
-    Business,
+	Business,
 } from "./components/LoginWrapper";
 export const Login = () => {
+	const dispatch = useDispatch();
+	const [formData, setFormData] = React.useState({
+		email: "",
+		password: "",
+	});
+
+	const handleChange = (e) => {
+		setFormData({ ...formData, [e.target.id]: e.target.value });
+	};
+	const { email, password } = formData;
+
+	const handleSubmit = (e) => {
+		console.log(formData);
+
+		if (email === "abc@xyz.com" && password === "123") {
+			dispatch(isLogIn("true"));
+		} else {
+			alert("Invalid Credentials");
+		}
+	};
+
 	return (
 		<>
 			<Overlay>
@@ -28,11 +51,26 @@ export const Login = () => {
 					</Logo>
 					<HeadText>Welcome to Pinterest</HeadText>
 					<Text>Find new ideas to try</Text>
-					<Form >
-						<Input placeholder="Email" id="email"></Input>
-						<Input placeholder="Create a password" id="password"></Input>
-						<Input placeholder="Age" id="age"></Input>
-						<Input button type="button" value="Continue"></Input>
+					<Form>
+						<Input
+							onChange={handleChange}
+							placeholder="Email"
+							id="email"
+							value={email}
+						></Input>
+						<Input
+							onChange={handleChange}
+							placeholder="Enter password"
+							id="password"
+							value={password}
+						></Input>
+
+						<Input
+							onClick={handleSubmit}
+							button
+							type="button"
+							value="Login"
+						></Input>
 					</Form>
 					<Text style={{ margin: `20px 0` }}>OR</Text>
 					<Input facebook type="button" value="Continue with Facebook"></Input>
