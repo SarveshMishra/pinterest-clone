@@ -28,6 +28,7 @@ export const Login = () => {
 
 		if (email === "abc@xyz.com" && password === "123") {
 			dispatch(isLogIn("true"));
+			localStorage.setItem("isLogIn", "true");
 		} else {
 			alert("Invalid Credentials");
 		}
