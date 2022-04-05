@@ -4,6 +4,8 @@ import React from "react";
 import "animate.css";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Grid } from "../components/HomepageComponents/Grid";
+import { Login } from "../components/Login/Login";
 const Button = styled.button`
 	background-color: ${(props) => (props.signup ? "#EFEFEF" : "#E60023")};
 	border-radius: 20px;
@@ -20,10 +22,10 @@ const Button = styled.button`
 		background-color: ${(props) => (props.signup ? "#ddd" : "#a3081a;")};
 	}
 `;
-const colors = ["#C28B00", "#0076D3", "#518C7B", "#507A57"];
-const delay = 2500;
 
 export const Homepage = () => {
+	const colors = ["#C28B00", "#0076D3", "#518C7B", "#507A57"];
+	const delay = 2500;
 	const [index, setIndex] = React.useState(0);
 	const [text, setText] = React.useState("");
 	const timeoutRef = React.useRef(null);
@@ -136,6 +138,17 @@ export const Homepage = () => {
 					</div>
 				</div>
 			</div>
+			<div className="homepage-grid">
+				<Grid one></Grid>
+				<Grid two></Grid>
+				<Grid three></Grid>
+				<Grid four></Grid>
+				<Grid five></Grid>
+				<Grid six></Grid>
+				<Grid seven></Grid>
+			</div>
+
+			<Login />
 		</div>
 	);
 };
