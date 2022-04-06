@@ -90,3 +90,16 @@ font-weight : 600;
 backgroung-color :none;
 margin-top : 3%;
 `
+
+export const Image_card = styled.div`
+display: grid;
+grid-template-columns: repeat(3,1fr);
+padding: 10px;
+column-gap: 20px;
+padding-left: 300px;
+margin-top: 80px;
+img{
+  border-radius : 30px
+  
+}
+`
