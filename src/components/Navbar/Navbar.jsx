@@ -122,9 +122,9 @@ export const Navbar = () => {
 
         
 
-        <Profile_Pic>
+        {/* <Profile_Pic>
          <img src={User} alt="" />
-        </Profile_Pic>
+        </Profile_Pic> */}
 
 
 

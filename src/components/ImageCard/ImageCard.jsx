@@ -6,9 +6,9 @@ import whatsapp_icon from "../../img/whatsapp_icon.png"
 import facebook_icon from "../../img/facebook_icon.png"
 import search_icon from "../../img/search_icon.png"
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 const ImageCard = (probs) => {
   const [share, setShare] = useState(false);
-
   const [modal, setModal] = useState(false);
 
 
@@ -33,17 +33,9 @@ const ImageCard = (probs) => {
   }
 
 
-
-
- 
-
- 
-
-
-
   return (
     <div>
-
+ <Link to={`/pin/${probs.id}`}> 
         <div className="container">
             <img src={probs.image} alt="Snow" className='main_image'/>
             <div className="top_right">Save</div>
@@ -52,6 +44,8 @@ const ImageCard = (probs) => {
                 <img src={more_icon} alt="" onClick={toggleModal} />
             </div>
         </div>
+
+  </Link>
 
         {share && (
         <div className="modal">

@@ -1,0 +1,181 @@
+*{
+    font-family: "Roboto", sans-serif;
+}
+.post_main{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    margin-top: 5rem;
+    flex-direction: column;
+
+}
+.post_middle{
+    margin: auto;
+    display: grid;
+    place-content:center;
+    grid-template-columns: 1fr 1fr;
+    width: 60rem;
+    height: auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+     
+}
+.icon_collection{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+
+.icon_collection_left img{
+    width: 25px;
+    padding: 10px;
+    border-radius: 50%;
+    padding: 10px;
+    background-color: white;
+}
+
+.icon_collection_left img:hover{
+    width: 25px;
+    padding: 10px;
+    background-color: gainsboro;
+    cursor: pointer;
+}
+.icon_collection_rigth{
+    display: flex;
+}
+.save{
+    
+    border-radius: 20px;
+    background-color: #E60023;
+    color: white;
+    font-weight: 700;
+    font-family: "Roboto", sans-serif; 
+    margin-left: 20px;
+    align-items: center;
+    display: flex;
+    width: 5rem;
+    justify-content: center;
+    height: 3rem;
+}
+.save:hover{
+    cursor: pointer;
+    background-color: #b6162e;
+}
+.profile_collection{
+    display: flex;
+    align-items: center;
+}
+.profile_collection img{
+    width: 15px;
+    padding-left: 10px;
+}
+.post_info{
+    padding: 20px;
+
+}
+.owner_post{
+    display: flex;
+    align-items: center;
+}
+.owner_name{
+  padding: 10px;
+}
+.flex{
+    display: flex;
+}
+.post_follow_section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+}
+.post_follow_section div{
+    align-items: center;
+}
+
+.post_follow_section img{
+    border-radius: 50%;
+}
+.follow_div{
+    background-color: gainsboro;
+    color: black;
+    padding: 15px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-family: "Roboto", sans-serif; 
+    margin-left: 20px;
+}
+
+.follow_div:hover{
+    cursor: pointer;
+}
+.down_hover{
+   background-color: white; 
+   padding: 10px;
+   border-radius: 50%;
+}
+
+.down_hover:hover{
+    background-color: rgb(199, 194, 194); 
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+ }
+.channel_image{
+    width: 40px;
+    margin-right: 10px;   
+}
+.comments_section{
+    padding: 20px;
+    width: 100%;
+}
+.channel_image2{
+    width: 40px;
+    margin-right: 20px; 
+    border-radius: 50%;  
+}
+.comments_section p{
+    font-size: small;
+    padding-bottom: 20px;
+}
+.chat_input{
+    display: flex;
+    align-items: center;
+
+}
+
+.chat_input img{
+    width: 30px;
+    margin-right: 20px; 
+    border-radius: 50%;
+    margin-left: 10px;  
+}
+.commets_section2{
+    display: flex;
+    width: 100%;
+}
+
+.chat_input{
+    justify-content: center;
+    width: 20rem;
+   border-radius: 20px;
+   border: 1px solid grey;
+   
+}
+
+.chat_input input{
+    padding: 10px;
+    border: none;
+    outline: none;
+    height: 2rem;
+    font-size: medium;
+}
+.post_bottom{
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 700;
+}
