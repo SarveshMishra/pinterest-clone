@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 
@@ -63,8 +64,8 @@ margin: auto 0px;
 `
 const Input= styled.input`
 height: 100%;
-width : 96%;
-color : #333;
+width : 90%;
+color : #d6d6d6;
 margin: 0px;
 padding: auto ;
 outline : none;
@@ -84,8 +85,9 @@ margin: auto 10px;
 paddin-top: 4%
 `
 
-
 export const Navbar = () => {
+  const userData = useSelector((state) => state.user.user_data);
+  console.log(userData);
   return (
     <Navbar_wrapper>
       <Logo_wrapper>
@@ -121,7 +123,7 @@ export const Navbar = () => {
         
 
         <Profile_Pic>
-        <Svg class="Hn_ gUZ B9u U9O kVc" height="24" width="24" viewBox="0 0 24 24" aria-hidden="true" aria-label="" role="img" fill = "rgb(118,118,118)"><path d="M18 12.5a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 18 12.5m-6 0a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 12 12.5m-6 0a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 6 12.5M12 0C5.925 0 1 4.925 1 11c0 2.653.94 5.086 2.504 6.986L2 24l5.336-3.049A10.93 10.93 0 0 0 12 22c6.075 0 11-4.925 11-11S18.075 0 12 0"></path></Svg>
+         <img src={User} alt="" />
         </Profile_Pic>
 
 
