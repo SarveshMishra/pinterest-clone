@@ -19,7 +19,7 @@ let image_url="https://i.pinimg.com/236x/26/21/df/2621df15c7d12b5cac85517887e8ec
 
 let owner="mangesh pandit"
   useEffect(() => {
-     fetch(`http://localhost:3004/p_data?id=${prodId}`)
+     fetch(`http://localhost:3005/posts?id=${prodId}`)
          .then((res) => res.json())
          .then((res) => setDetails(res))
          .catch((err) => console.log(err))
