@@ -76,35 +76,35 @@ var list2=[
     <div>
        {
           list1.map((ele)=>{
-          return <ImageCard image={ele.image_url}/>
+          return <ImageCard image={ele.image_url} id={1}/>
           })
         }
     </div>
     <div>
        {
           list2.map((ele)=>{
-          return <ImageCard image={ele.image_url}/>
+          return <ImageCard image={ele.image_url} id={1} />
           })
         }
     </div>
     <div>
        {
           list1.map((ele)=>{
-          return <ImageCard image={ele.image_url}/>
+          return <ImageCard image={ele.image_url} id={1}/>
           })
         }
     </div>
     <div>
        {
           list2.map((ele)=>{
-          return <ImageCard image={ele.image_url}/>
+          return <ImageCard image={ele.image_url} id={1}/>
           })
         }
     </div>
     <div>
        {
           list1.map((ele)=>{
-          return <ImageCard image={ele.image_url}/>
+          return <ImageCard image={ele.image_url} id={1}/>
           })
         }
     </div>

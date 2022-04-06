@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import { Error } from "./routes/Error";
 import {store} from "./redux/store";
+import PostPage from "./routes/PostPage"
 ReactDOM.render(
 	<Provider store={store}>
 		<BrowserRouter>
@@ -18,6 +19,8 @@ ReactDOM.render(
 				<Route path="business" element={<Business />} />
 				<Route path="blog" element={<Blog />} />
 				<Route path="*" element={<Error />} />
+				<Route path='/pin/:prodId' element={<PostPage/>} />
+
 			</Routes>
 		</BrowserRouter>
 	</Provider>,
