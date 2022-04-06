@@ -8,8 +8,9 @@ import { Blog } from "./routes/Blog";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import { Error } from "./routes/Error";
-import {store} from "./redux/store";
-import PostPage from "./routes/PostPage"
+import { store } from "./redux/store";
+import PostPage from "./routes/PostPage";
+import { User_ProfilePage } from "./routes/User_ProfilePage";
 ReactDOM.render(
 	<Provider store={store}>
 		<BrowserRouter>
@@ -19,8 +20,8 @@ ReactDOM.render(
 				<Route path="business" element={<Business />} />
 				<Route path="blog" element={<Blog />} />
 				<Route path="*" element={<Error />} />
-				<Route path='/pin/:prodId' element={<PostPage/>} />
-
+				<Route path="/pin/:prodId" element={<PostPage />} />
+				<Route path="/:username" element={<User_ProfilePage />} />
 			</Routes>
 		</BrowserRouter>
 	</Provider>,
