@@ -37,7 +37,7 @@ font-weight: bold;
 font-size :120%;
 `
 const Search_div = styled.div`
-width: 72%;
+width: 80%;
 color: rgb(118,118,118);
 margin: auto 1%;
 border-radius : 50px;
@@ -46,7 +46,15 @@ height: 100%;
 
 &:hover{
   background-color: #E1E1E1;
+  border: 3px solid #1e97c7;
+  
+  {
+    Input{
+      background-color: #E1E1E1;
+    }
+  }
 }
+
 `
 const Notification = styled.div`
 margin: auto 0px;
@@ -65,7 +73,7 @@ margin: auto 0px;
 const Input= styled.input`
 height: 100%;
 width : 90%;
-color : #d6d6d6;
+// color : #d6d6d6;
 margin: 0px;
 padding: auto ;
 outline : none;
@@ -73,11 +81,12 @@ border: none;
 font-size :100%;
 // margin-bottom: 100px;
 border-radius : 50px;
-
 &:hover{
   background-color: #E1E1E1;
 }
+
 `
+
 const Svg = styled.svg`
 margin:0px;
 margin: auto 10px;
