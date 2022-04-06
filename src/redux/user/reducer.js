@@ -1,11 +1,11 @@
-import { ADD_USER } from "./action";
+import { LOG_USER_DATA } from "./action";
 
-export const userReducer = (state = {}, action) => {
+export const userReducer = (state = { user_data: [] }, action) => {
 	switch (action.type) {
-		case ADD_USER:
+		case LOG_USER_DATA:
 			return {
 				...state,
-				user: action.user,
+				user_data: action.payload,
 			};
 		default:
 			return state;

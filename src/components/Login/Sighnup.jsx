@@ -1,5 +1,6 @@
 import React from "react";
-
+import { useDispatch } from "react-redux";
+import { isLogIn } from "../../redux/global_data/action";
 import {
 	Form,
 	HeadText,
@@ -11,6 +12,7 @@ import {
 	Business,
 } from "./components/LoginWrapper";
 export const Login = () => {
+	const dispatch = useDispatch();
 	const [formData, setFormData] = React.useState({
 		email: "",
 		password: "",
@@ -21,32 +23,15 @@ export const Login = () => {
 	};
 	const { email, password } = formData;
 
-	const handleSubmit = () => {
+	const handleSubmit = (e) => {
 		console.log(formData);
 
-		fetch(
-			`https://simple-json-db.herokuapp.com/users?email=${email}&password=${password}`
-		)
-			.then((res) => res.json())
-			.then((data) => {
-				console.log(data);
-				if (data.length === 1) {
-					localStorage.setItem("isLogIn", "true");
-					localStorage.setItem("userID", JSON.stringify(data[0].id));
-					alert(`Welcome ${data[0].name}`);
-					window.location.reload();
-				} else {
-					alert("Invalid Email or Password");
-				}
-			});
-
-		// if (email === "abc@xyz.com" && password == "123") {
-		// 	dispatch(isLogIn(true));
-		// 	localStorage.setItem("isLogIn", "true");
-		// 	alert("Welcome");
-		// } else {
-		// 	alert("Invalid Email or Password");
-		// }
+		if (email === "abc@xyz.com" && password === "123") {
+			dispatch(isLogIn("true"));
+			localStorage.setItem("isLogIn", "true");
+		} else {
+			alert("Invalid Credentials");
+		}
 	};
 
 	return (

@@ -89,9 +89,11 @@ export const Homepage = () => {
 						</div>
 					</div>
 					<div className="btn">
-						<Button>
-							<div>Log in</div>
-						</Button>
+						<a href="#login">
+							<Button>
+								<div>Log in</div>
+							</Button>
+						</a>
 					</div>
 					<div className="btn">
 						<Button signup>

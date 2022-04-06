@@ -11,15 +11,16 @@ import down_arrow from "../img/down-arrow.png"
 import icon_owner from "../img/icon_owner.jpg"
 import "../components/ImageCard/ImageCard.css"
 import "../css/PostPage.css"
- 
+import { Navbar } from '../components/Navbar/Navbar';
+
 const PostPage = () => {
   const { prodId } = useParams();
   const [details, setDetails] = useState(null);
 let image_url="https://i.pinimg.com/236x/26/21/df/2621df15c7d12b5cac85517887e8eca9.jpg"
 
 let owner="mangesh pandit"
-  useEffect(() => {
-     fetch(`http://localhost:3005/posts?id=${prodId}`)
+useEffect(() => {
+     fetch(`https://simple-json-db.herokuapp.com/posts?id=${prodId}`)
          .then((res) => res.json())
          .then((res) => setDetails(res))
          .catch((err) => console.log(err))
@@ -37,7 +38,11 @@ else if(details.length===0){
 
 return (
 
-<div className='post_main'>
+<div>
+  <div>
+    <Navbar/>
+  </div>
+  <div className='post_main'>
     <div className='post_middle'>
       <div className='post_left'>
       <div className="container container2">
@@ -135,6 +140,8 @@ return (
       <User_HomePage/>
     </div>
 </div>
+</div>
+
 
   
 )
