@@ -103,3 +103,14 @@ img{
   
 }
 `
+export const Middle_div = styled.div`
+// background-color : yellow;
+width : 100%;
+height : 120%;
+padding-left : 2%;
+`
+
+export const Svg = styled.svg`
+margin : 10px;
+margin-left : 93%;
+`
