@@ -21,12 +21,14 @@ const Navbar_wrapper = styled.div`
 `;
 
 const Logo_wrapper = styled.div`
+
 	margin-right: 10px;
 	border-radius: 50px;
 	width: auto;
 	padding: auto;
 	margin: auto 1%;
 `;
+
 
 const Home_div = styled.div`
 	width: auto;
@@ -63,8 +65,10 @@ const Notification = styled.div`
 	margin: auto 0px;
 `;
 const Message = styled.div`
+
 	margin: auto 0px;
 `;
+
 
 const Drop_Down = styled.div`
 	margin: auto 0px;
@@ -88,6 +92,7 @@ const Input = styled.input`
 `;
 
 const Svg = styled.svg`
+
 	margin: 0px;
 	margin: auto 10px;
 `;
@@ -116,6 +121,7 @@ const DropDownMenu = styled.div`
 	}
 	ul {
 		list-style-type: none;
+
 
 		li {
 			margin: 10px;
@@ -225,6 +231,7 @@ export const Navbar = () => {
 				</Svg>
 			</Message>
 
+
 			<Navbar_profile>
 				<img onClick={handleNavigation} src={`${img_url}`} alt="" />
 				<Drop_Down onClick={() => setToggleDropDown(!toggleDropDown)}>
@@ -263,3 +270,4 @@ export const Navbar = () => {
 		</Navbar_wrapper>
 	);
 };
+
