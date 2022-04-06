@@ -7,7 +7,7 @@ export const LoginWrapper = styled.div`
 	position: absolute;
 	text-align: center;
 	margin: auto 0px auto 4%;
-	min-height: 90vh;
+
 	box-shadow: rgb(0 0 0 / 45%) 0px 2px 10px;
 	padding-bottom: 55px;
 	box-sizing: border-box;
@@ -95,4 +95,5 @@ export const Business = styled.div`
 	font-weight: bold;
 	font-size: 16px;
 	cursor: pointer;
+	margin-top: 100px;
 `;
