@@ -160,5 +160,22 @@
 }
 
 .chat_input{
-    width: 100%; 
+    justify-content: center;
+    width: 20rem;
+   border-radius: 20px;
+   border: 1px solid grey;
+   
+}
+
+.chat_input input{
+    padding: 10px;
+    border: none;
+    outline: none;
+    height: 2rem;
+    font-size: medium;
+}
+.post_bottom{
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 700;
 }

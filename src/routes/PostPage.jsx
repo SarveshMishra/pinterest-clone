@@ -131,6 +131,7 @@ return (
     </div>
     
     <div className='post_bottom'>
+   <h3>More like this</h3>
       <User_HomePage/>
     </div>
 </div>
