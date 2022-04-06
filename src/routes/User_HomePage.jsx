@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { isLogIn } from "../redux/global_data/action";
 import { addUserData } from "../redux/user/action";
 import "../css/user_homepage.css";
+import { Navbar } from "../components/Navbar/Navbar";
 export const User_HomePage = () => {
 	const dispatch = useDispatch();
 	const userData = useDispatch();
@@ -111,33 +112,50 @@ export const User_HomePage = () => {
 		},
 	];
 
-	return (
-		<div className="home_page_container">
-			<div>
-				{list1.map((ele) => {
-					return <ImageCard image={ele.image_url} />;
-				})}
-			</div>
-			<div>
-				{list2.map((ele) => {
-					return <ImageCard image={ele.image_url} />;
-				})}
-			</div>
-			<div>
-				{list1.map((ele) => {
-					return <ImageCard image={ele.image_url} />;
-				})}
-			</div>
-			<div>
-				{list2.map((ele) => {
-					return <ImageCard image={ele.image_url} />;
-				})}
-			</div>
-			<div>
-				{list1.map((ele) => {
-					return <ImageCard image={ele.image_url} />;
-				})}
-			</div>
-		</div>
-	);
-};
+  return (
+	  <div>
+	  <div><Navbar/></div>
+    <div className="home_page_container">
+    <div>
+       {
+          list1.map((ele)=>{
+          return <ImageCard image={ele.image_url} id={1}/>
+          })
+        }
+    </div>
+    <div>
+       {
+          list2.map((ele)=>{
+          return <ImageCard image={ele.image_url} id={1} />
+          })
+        }
+    </div>
+    <div>
+       {
+          list1.map((ele)=>{
+          return <ImageCard image={ele.image_url} id={1}/>
+          })
+        }
+    </div>
+    <div>
+       {
+          list2.map((ele)=>{
+          return <ImageCard image={ele.image_url} id={1}/>
+          })
+        }
+    </div>
+    <div>
+       {
+          list1.map((ele)=>{
+          return <ImageCard image={ele.image_url} id={1}/>
+          })
+        }
+    </div>
+     
+     
+    </div>
+	  </div>
+   
+  )
+}
+ 

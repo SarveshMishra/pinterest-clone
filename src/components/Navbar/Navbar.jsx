@@ -88,7 +88,6 @@ paddin-top: 4%
 export const Navbar = () => {
   const userData = useSelector((state) => state.user.user_data);
   console.log(userData);
- 
 
   return (
     <Navbar_wrapper>
@@ -124,7 +123,7 @@ export const Navbar = () => {
 
         
 
-        
+
 
 
 
