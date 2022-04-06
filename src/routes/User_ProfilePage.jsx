@@ -13,8 +13,10 @@ import {
   Button_wrapper,
   Create_button,
   Saved_button,
+  Image_card,
 } from "../components/UserProfile/UserProfile";
 // import { useSelector } from "react-redux";
+import {Navbar} from "../components/Navbar/Navbar"
 
 let userData = {
   id: 1,
@@ -76,11 +78,14 @@ const Profile_img = userData.public_profile.profile_img;
 const His_Name = userData.public_profile.name;
 const User_name = userData.public_profile.username;
 const following = userData.public_profile.following.length;
+const Img_src = userData.saved_image[0].img_url;
+console.log(Img_src);
 export const User_ProfilePage = () => {
   // const userData = useSelector((state) => state.user.user_data);
 
   return (
     <>
+	<Navbar/>
       <UserProfileWrapper>
         <ProfileContainer>
 
@@ -116,6 +121,10 @@ export const User_ProfilePage = () => {
 			</Button_wrapper>
 			
         </ProfileContainer>
+
+		<Image_card>
+			<img src={Img_src} alt="" />
+		</Image_card>
       </UserProfileWrapper>
     </>
   );
