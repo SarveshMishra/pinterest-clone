@@ -1,0 +1,25 @@
+.active {
+	background-color: black;
+	color: white;
+}
+.active:hover {
+	background-color: black;
+	color: white;
+}
+.notActive {
+	background-color: #fff;
+	color: black;
+}
+.today {
+	background-color: transparent;
+	color: black;
+}
+.today:hover {
+	background-color: #cecece;
+	color: black;
+}
+
+.notActive:hover {
+	background-color: #cecece;
+	color: black;
+}

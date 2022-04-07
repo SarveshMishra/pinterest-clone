@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { isLogIn } from "../../redux/global_data/action";
 import { addUserData } from "../../redux/user/action";
-
+import "./navbar.css";
 const Navbar_wrapper = styled.div`
 	// background-color: #cecece;
 	position: sticky;
@@ -21,38 +21,38 @@ const Navbar_wrapper = styled.div`
 `;
 
 const Logo_wrapper = styled.div`
-
 	margin-right: 10px;
 	border-radius: 50px;
 	width: auto;
 	padding: auto;
 	margin: auto 1%;
+	cursor: pointer;
 `;
 
-
-const Home_div = styled.div`
+const Home_div = styled.button`
 	width: auto;
 	margin: auto 1%;
 	font-weight: bold;
-	font-size: 120%;
+	font-size: 1rem;
+
+	border: none;
+	cursor: pointer;
+	padding: 1% 1.2%;
+	border-radius: 50px;
+	margin-left: auto;
 `;
-const Today_div = styled.div`
-	width: auto;
-	margin: auto 5px;
-	font-weight: bold;
-	font-size: 120%;
-`;
+
 const Search_div = styled.div`
 	width: 80%;
 	color: rgb(118, 118, 118);
 	margin: auto 1%;
 	border-radius: 50px;
-	// background-color: red;
+	box-sizing: border-box;
+
 	height: 100%;
 
 	&:hover {
 		background-color: #e1e1e1;
-		border: 3px solid #1e97c7;
 
 		 {
 			Input {
@@ -60,15 +60,22 @@ const Search_div = styled.div`
 			}
 		}
 	}
+	&:focus-within {
+		border: 3px solid #1e97c7;
+		Svg {
+			display: none;
+		}
+		Input {
+			padding-left: 2%;
+		}
+	}
 `;
 const Notification = styled.div`
 	margin: auto 0px;
 `;
 const Message = styled.div`
-
 	margin: auto 0px;
 `;
-
 
 const Drop_Down = styled.div`
 	margin: auto 0px;
@@ -92,7 +99,6 @@ const Input = styled.input`
 `;
 
 const Svg = styled.svg`
-
 	margin: 0px;
 	margin: auto 10px;
 `;
@@ -106,13 +112,13 @@ const Navbar_profile = styled.div`
 
 const DropDownMenu = styled.div`
 	width: 250px;
-
+	border: 1px solid #e1e1e1;
 	background-color: #fff;
 	border-radius: 10px;
 	position: absolute;
 	top: 100%;
 	right: 0.5%;
-
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	padding: 2%;
 	font-size: 1.1rem;
 	box-sizing: border-box;
@@ -121,7 +127,6 @@ const DropDownMenu = styled.div`
 	}
 	ul {
 		list-style-type: none;
-
 
 		li {
 			margin: 10px;
@@ -134,6 +139,7 @@ export const Navbar = () => {
 	// const userData = useSelector((state) => state.user.user_data);
 	const logOut = useDispatch();
 	const userData = useDispatch();
+	const [active, setActive] = React.useState(true);
 	const [img_url, setImg_url] = React.useState("");
 	const [username, setUsername] = React.useState("");
 	const [toggleDropDown, setToggleDropDown] = React.useState(false);
@@ -141,6 +147,7 @@ export const Navbar = () => {
 	const navigate = useNavigate();
 	React.useEffect(() => {
 		fetchUserProfile();
+		activeBtn();
 	}, []);
 	const fetchUserProfile = () => {
 		fetch(
@@ -159,14 +166,24 @@ export const Navbar = () => {
 		localStorage.setItem("isLogIn", false);
 		localStorage.setItem("userID", "");
 		userData(addUserData([]));
+		navigate("/");
 	};
 	const handleNavigation = () => {
 		navigate(`/${username}`);
 	};
-	
+
+	const activeBtn = () => {
+		let flag = window.location.href == "http://localhost:3000/" ? true : false;
+		setActive(flag);
+	};
+
 	return (
 		<Navbar_wrapper>
-			<Logo_wrapper>
+			<Logo_wrapper
+				onClick={() => {
+					navigate("/");
+				}}
+			>
 				<svg
 					class="gUZ lZJ U9O kVc"
 					height="24"
@@ -180,13 +197,20 @@ export const Navbar = () => {
 					<path d="M0 12c0 5.123 3.211 9.497 7.73 11.218-.11-.937-.227-2.482.025-3.566.217-.932 1.401-5.938 1.401-5.938s-.357-.715-.357-1.774c0-1.66.962-2.9 2.161-2.9 1.02 0 1.512.765 1.512 1.682 0 1.025-.653 2.557-.99 3.978-.281 1.189.597 2.159 1.769 2.159 2.123 0 3.756-2.239 3.756-5.471 0-2.861-2.056-4.86-4.991-4.86-3.398 0-5.393 2.549-5.393 5.184 0 1.027.395 2.127.889 2.726a.36.36 0 0 1 .083.343c-.091.378-.293 1.189-.332 1.355-.053.218-.173.265-.4.159-1.492-.694-2.424-2.875-2.424-4.627 0-3.769 2.737-7.229 7.892-7.229 4.144 0 7.365 2.953 7.365 6.899 0 4.117-2.595 7.431-6.199 7.431-1.211 0-2.348-.63-2.738-1.373 0 0-.599 2.282-.744 2.84-.282 1.084-1.064 2.456-1.549 3.235C9.584 23.815 10.77 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12"></path>
 				</svg>
 			</Logo_wrapper>
-			<Home_div>
+			<Home_div
+				id="home_btn"
+				onClick={() => {
+					navigate("/");
+				}}
+				className={active ? "active" : "notActive"}
+				style={{}}
+			>
 				<span>Home</span>
 			</Home_div>
-			<Today_div>
+			<Home_div className="today">
 				<span>Today</span>
-			</Today_div>
-			<Search_div>
+			</Home_div>
+			<Search_div id="search_bar">
 				<Svg
 					class="gUZ B9u U9O kVc"
 					height="16"
@@ -231,7 +255,6 @@ export const Navbar = () => {
 				</Svg>
 			</Message>
 
-
 			<Navbar_profile>
 				<img onClick={handleNavigation} src={`${img_url}`} alt="" />
 				<Drop_Down onClick={() => setToggleDropDown(!toggleDropDown)}>
@@ -270,4 +293,3 @@ export const Navbar = () => {
 		</Navbar_wrapper>
 	);
 };
-
