@@ -3,51 +3,51 @@ import styled from "styled-components";
 
 export const Grid = styled.div`
 	height: 100%;
-	width: 235px;
-	background:  ${(props) =>
+	width: 20%;
+	overflow: hidden;
+	
+	padding-top: ${(props) =>
 		props.one
-			? "red"
+			? "5%"
 			: props.two
-			? "green"
+			? "15%"
 			: props.three
-			? "blue"
+			? "25%"
 			: props.four
-			? "black"
-			: props.five
-			? "yellow"
-			: props.six
-			? "orange"
-			: "grey"};
-	position: absolute;
-	top: ${(props) =>
-		props.one
 			? "30%"
-			: props.two
-			? "50%"
-			: props.three
-			? "60%"
-			: props.four
-			? "80%"
 			: props.five
-			? "60%"
+			? "25%"
 			: props.six
-			? "50%"
-			: "30%"}};
-	margin-left: ${(props) =>
-		props.one
-			? "-130px"
-			: props.two
-			? "120px"
-			: props.three
-			? "370px"
-			: props.four
-			? "620px"
-			: props.five
-			? "870px"
-			: props.six
-			? "1120px"
-			: "1370px"};
-		
+			? "15%"
+			: "5%"}};
+	
 		border-radius: 20px;
 		
+		div{
+			height: 50%;
+			width: 100%;
+			margin-bottom: 5%;
+
+			img{
+				height: 100%;
+				width: 100%;
+				border-radius: 20px;
+			}
+		}
+		margin-left: ${(props) =>
+			props.one
+				? "-130px"
+				: props.two
+				? "10px"
+				: props.three
+				? "10px"
+				: props.four
+				? "10px"
+				: props.five
+				? "10px"
+				: props.six
+				? "10px"
+				: "10px"};
+				
+	 margin-right:${(props) => (props.seven ? "-130px" : "5px")};
 `;

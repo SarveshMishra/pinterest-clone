@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Grid } from "../components/HomepageComponents/Grid";
 import { Login } from "../components/Login/Login";
+import ImageCard from "../components/ImageCard/ImageCard";
 const Button = styled.button`
 	background-color: ${(props) => (props.signup ? "#EFEFEF" : "#E60023")};
 	border-radius: 20px;
@@ -22,6 +23,136 @@ const Button = styled.button`
 		background-color: ${(props) => (props.signup ? "#ddd" : "#a3081a;")};
 	}
 `;
+const list1 = [
+	{
+		image_url:
+			"https://i.pinimg.com/236x/26/21/df/2621df15c7d12b5cac85517887e8eca9.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/236x/16/7f/e6/167fe63d4a008f8957c8e9406953af1f.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/736x/77/00/44/77004487bd4a27aba64a4fadce35732b.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/236x/16/7f/e6/167fe63d4a008f8957c8e9406953af1f.jpg",
+	},
+];
+const list2 = [
+	{
+		image_url:
+			"https://i.pinimg.com/236x/16/7f/e6/167fe63d4a008f8957c8e9406953af1f.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/236x/26/21/df/2621df15c7d12b5cac85517887e8eca9.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/736x/77/00/44/77004487bd4a27aba64a4fadce35732b.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/736x/77/00/44/77004487bd4a27aba64a4fadce35732b.jpg",
+	},
+	
+	
+];
+const list3 = [
+	{
+		image_url:
+			"https://i.pinimg.com/736x/77/00/44/77004487bd4a27aba64a4fadce35732b.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/236x/16/7f/e6/167fe63d4a008f8957c8e9406953af1f.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/236x/26/21/df/2621df15c7d12b5cac85517887e8eca9.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/550x/66/3c/2b/663c2baa9a97ac56fe9c22a0fe139386.jpg",
+	},
+];
+const list4 = [
+	{
+		image_url:
+			"https://i.pinimg.com/236x/1e/b9/b9/1eb9b99f28502d3d4185390e997e8eb4.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/236x/16/7f/e6/167fe63d4a008f8957c8e9406953af1f.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/736x/77/00/44/77004487bd4a27aba64a4fadce35732b.jpg",
+	},
+];
+const list5 = [
+	{
+		image_url:
+			"https://i.pinimg.com/550x/66/3c/2b/663c2baa9a97ac56fe9c22a0fe139386.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/236x/16/7f/e6/167fe63d4a008f8957c8e9406953af1f.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/736x/77/00/44/77004487bd4a27aba64a4fadce35732b.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/236x/16/7f/e6/167fe63d4a008f8957c8e9406953af1f.jpg",
+	},
+];
+const list6 = [
+	{
+		image_url:
+			"https://i.pinimg.com/550x/46/13/5b/46135bb6dfe9e43adb5302fe85bed6e2.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/236x/16/7f/e6/167fe63d4a008f8957c8e9406953af1f.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/736x/77/00/44/77004487bd4a27aba64a4fadce35732b.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/736x/77/00/44/77004487bd4a27aba64a4fadce35732b.jpg",
+	},
+];
+const list7 = [
+	{
+		image_url:
+			"https://i.pinimg.com/550x/43/af/6f/43af6f5aa4df62b5bc7748e40f46f4c4.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/236x/16/7f/e6/167fe63d4a008f8957c8e9406953af1f.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/736x/77/00/44/77004487bd4a27aba64a4fadce35732b.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/736x/77/00/44/77004487bd4a27aba64a4fadce35732b.jpg",
+	},
+	{
+		image_url:
+			"https://i.pinimg.com/736x/77/00/44/77004487bd4a27aba64a4fadce35732b.jpg",
+	},
+];
+
+
 
 export const Homepage = () => {
 	const colors = ["#C28B00", "#0076D3", "#518C7B", "#507A57"];
@@ -140,14 +271,70 @@ export const Homepage = () => {
 					</div>
 				</div>
 			</div>
-			<div className="homepage-grid">
-				<Grid one></Grid>
-				<Grid two></Grid>
-				<Grid three></Grid>
-				<Grid four></Grid>
-				<Grid five></Grid>
-				<Grid six></Grid>
-				<Grid seven></Grid>
+			<div id="homepage-grid">
+				<Grid one>
+					{list1.map((item, index) => {
+						return (
+							<div key={index}>
+								<img src={item.image_url} alt="" />
+							</div>
+						);
+					})}
+				</Grid>
+				<Grid two>
+					{list2.map((item, index) => {
+						return (
+							<div key={index}>
+								<img src={item.image_url} alt="" />
+							</div>
+						);
+					})}
+				</Grid>
+				<Grid three>
+					{list3.map((item, index) => {
+						return (
+							<div key={index}>
+								<img src={item.image_url} alt="" />
+							</div>
+						);
+					})}
+				</Grid>
+				<Grid four>
+					{list4.map((item, index) => {
+						return (
+							<div key={index}>
+								<img src={item.image_url} alt="" />
+							</div>
+						);
+					})}
+				</Grid>
+				<Grid five>
+					{list5.map((item, index) => {
+						return (
+							<div key={index}>
+								<img src={item.image_url} alt="" />
+							</div>
+						);
+					})}
+				</Grid>
+				<Grid six>
+					{list6.map((item, index) => {
+						return (
+							<div key={index}>
+								<img src={item.image_url} alt="" />
+							</div>
+						);
+					})}
+				</Grid>
+				<Grid seven>
+					{list7.map((item, index) => {
+						return (
+							<div key={index}>
+								<img src={item.image_url} alt="" />
+							</div>
+						);
+					})}
+				</Grid>
 			</div>
 
 			<Login />
