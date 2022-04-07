@@ -1,6 +1,6 @@
 // User Homepage After Login
 import ImageCard from "../components/ImageCard/ImageCard";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { isLogIn } from "../redux/global_data/action";
 import { addUserData } from "../redux/user/action";
@@ -9,7 +9,8 @@ import { Navbar } from "../components/Navbar/Navbar";
 export const User_HomePage = () => {
 	const dispatch = useDispatch();
 	const userData = useDispatch();
-	useEffect(() => {
+
+ 	useEffect(() => {
 		fetchUserProfile();
 	}, []);
 	const fetchUserProfile = () => {
@@ -25,92 +26,318 @@ export const User_HomePage = () => {
 				localStorage.setItem("userData", JSON.stringify(data[0]));
 			});
 	};
-	var list1 = [
+	 
+	 var list=[
 		{
-			image_url:
-				"https://i.pinimg.com/236x/26/21/df/2621df15c7d12b5cac85517887e8eca9.jpg",
+		  "id": 1,
+		  "url": "https://i.pinimg.com/236x/26/21/df/2621df15c7d12b5cac85517887e8eca9.jpg",
+		  "alt": "image",
+		  "comments": [
+			{
+			  "id": 1,
+			  "comment": "comment1",
+			  "user_id": 1
+			}
+		  ],
+		  "likes": [
+			{
+			  "id": 1,
+			  "user_id": 1
+			}
+		  ]
 		},
 		{
-			image_url:
-				"https://i.pinimg.com/236x/16/7f/e6/167fe63d4a008f8957c8e9406953af1f.jpg",
+		  "url": "https://i.pinimg.com/236x/26/21/df/2621df15c7d12b5cac85517887e8eca9.jpg",
+		  "alt": "image",
+		  "comments": [
+			{
+			  "id": 1,
+			  "comment": "comment1",
+			  "user_id": 1
+			}
+		  ],
+		  "likes": [
+			{
+			  "id": 1,
+			  "user_id": 1
+			}
+		  ],
+		  "id": 2
 		},
 		{
-			image_url:
-				"https://i.pinimg.com/736x/77/00/44/77004487bd4a27aba64a4fadce35732b.jpg",
+		  "url": "https://i.pinimg.com/236x/26/21/df/2621df15c7d12b5cac85517887e8eca9.jpg",
+		  "alt": "image",
+		  "comments": [
+			{
+			  "id": 1,
+			  "comment": "comment1",
+			  "user_id": 1
+			}
+		  ],
+		  "likes": [
+			{
+			  "id": 1,
+			  "user_id": 1
+			}
+		  ],
+		  "id": 3
 		},
+		{
+		  "url": "https://i.pinimg.com/236x/16/7f/e6/167fe63d4a008f8957c8e9406953af1f.jpg",
+		  "alt": "image",
+		  "comments": [
+			{
+			  "id": 1,
+			  "comment": "comment1",
+			  "user_id": 1
+			}
+		  ],
+		  "likes": [
+			{
+			  "id": 1,
+			  "user_id": 1
+			}
+		  ],
+		  "id": 4
+		},
+		{
+		  "url": "https://i.pinimg.com/736x/77/00/44/77004487bd4a27aba64a4fadce35732b.jpg",
+		  "alt": "image",
+		  "comments": [
+			{
+			  "id": 1,
+			  "comment": "comment1",
+			  "user_id": 1
+			}
+		  ],
+		  "likes": [
+			{
+			  "id": 1,
+			  "user_id": 1
+			}
+		  ],
+		  "id": 5
+		},
+		{
+		  "url": "https://i.pinimg.com/236x/81/df/69/81df699b25ca1242a796f51397263d1a.jpg",
+		  "alt": "image",
+		  "comments": [
+			{
+			  "id": 1,
+			  "comment": "comment1",
+			  "user_id": 1
+			}
+		  ],
+		  "likes": [
+			{
+			  "id": 1,
+			  "user_id": 1
+			}
+		  ],
+		  "id": 6
+		},
+		{
+		  "url": "https://i.pinimg.com/236x/86/5a/62/865a62ce02bb38bd88851269a41959d1.jpg",
+		  "alt": "image",
+		  "comments": [
+			{
+			  "id": 1,
+			  "comment": "comment1",
+			  "user_id": 1
+			}
+		  ],
+		  "likes": [
+			{
+			  "id": 1,
+			  "user_id": 1
+			}
+		  ],
+		  "id": 7
+		},
+		{
+		  "url": "https://i.pinimg.com/236x/1e/b9/b9/1eb9b99f28502d3d4185390e997e8eb4.jpg",
+		  "alt": "image",
+		  "comments": [
+			{
+			  "id": 1,
+			  "comment": "comment1",
+			  "user_id": 1
+			}
+		  ],
+		  "likes": [
+			{
+			  "id": 1,
+			  "user_id": 1
+			}
+		  ],
+		  "id": 8
+		},
+		{
+		  "url": "https://i.pinimg.com/236x/1e/b9/b9/1eb9b99f28502d3d4185390e997e8eb4.jpg",
+		  "alt": "image",
+		  "comments": [
+			{
+			  "id": 1,
+			  "comment": "comment1",
+			  "user_id": 1
+			}
+		  ],
+		  "likes": [
+			{
+			  "id": 1,
+			  "user_id": 1
+			}
+		  ],
+		  "id": 9
+		},
+		{
+		  "url": "https://i.pinimg.com/236x/1e/b9/b9/1eb9b99f28502d3d4185390e997e8eb4.jpg",
+		  "alt": "image",
+		  "comments": [
+			{
+			  "id": 1,
+			  "comment": "comment1",
+			  "user_id": 1
+			}
+		  ],
+		  "likes": [
+			{
+			  "id": 1,
+			  "user_id": 1
+			}
+		  ],
+		  "id": 10
+		},
+		{
+		  "url": "https://i.pinimg.com/236x/8a/e2/b1/8ae2b1f094af8f87438fa952678620d3.jpg",
+		  "alt": "image",
+		  "comments": [
+			{
+			  "id": 1,
+			  "comment": "comment1",
+			  "user_id": 1
+			}
+		  ],
+		  "likes": [
+			{
+			  "id": 1,
+			  "user_id": 1
+			}
+		  ],
+		  "id": 11
+		},
+		{
+		  "url": "https://i.pinimg.com/550x/66/3c/2b/663c2baa9a97ac56fe9c22a0fe139386.jpg",
+		  "alt": "image",
+		  "comments": [
+			{
+			  "id": 1,
+			  "comment": "comment1",
+			  "user_id": 1
+			}
+		  ],
+		  "likes": [
+			{
+			  "id": 1,
+			  "user_id": 1
+			}
+		  ],
+		  "id": 12
+		},
+		{
+		  "url": "https://i.pinimg.com/550x/31/ed/67/31ed67ff40247db90463d949e07a5e1d.jpg",
+		  "alt": "image",
+		  "comments": [
+			{
+			  "id": 1,
+			  "comment": "comment1",
+			  "user_id": 1
+			}
+		  ],
+		  "likes": [
+			{
+			  "id": 1,
+			  "user_id": 1
+			}
+		  ],
+		  "id": 13
+		},
+		{
+		  "url": "https://i.pinimg.com/550x/88/5f/e7/885fe7827f8e5f5297c4c0168fd4514d.jpg",
+		  "alt": "image",
+		  "comments": [
+			{
+			  "id": 1,
+			  "comment": "comment1",
+			  "user_id": 1
+			}
+		  ],
+		  "likes": [
+			{
+			  "id": 1,
+			  "user_id": 1
+			}
+		  ],
+		  "id": 14
+		},
+		{
+		  "url": "https://i.pinimg.com/550x/46/13/5b/46135bb6dfe9e43adb5302fe85bed6e2.jpg",
+		  "alt": "image",
+		  "comments": [
+			{
+			  "id": 1,
+			  "comment": "comment1",
+			  "user_id": 1
+			}
+		  ],
+		  "likes": [
+			{
+			  "id": 1,
+			  "user_id": 1
+			}
+		  ],
+		  "id": 15
+		},
+		{
+		  "url": "https://i.pinimg.com/550x/46/13/5b/46135bb6dfe9e43adb5302fe85bed6e2.jpg",
+		  "alt": "image",
+		  "comments": [
+			{
+			  "id": 1,
+			  "comment": "comment1",
+			  "user_id": 1
+			}
+		  ],
+		  "likes": [
+			{
+			  "id": 1,
+			  "user_id": 1
+			}
+		  ],
+		  "id": 16
+		},
+		{
+		  "url": "https://i.pinimg.com/550x/43/af/6f/43af6f5aa4df62b5bc7748e40f46f4c4.jpg",
+		  "alt": "image",
+		  "comments": [
+			{
+			  "id": 1,
+			  "comment": "comment1",
+			  "user_id": 1
+			}
+		  ],
+		  "likes": [
+			{
+			  "id": 1,
+			  "user_id": 1
+			}
+		  ],
+		  "id": 17
+		}
+	  ]
 
-		{
-			image_url:
-				"https://i.pinimg.com/236x/81/df/69/81df699b25ca1242a796f51397263d1a.jpg",
-		},
-		{
-			image_url:
-				"https://i.pinimg.com/236x/86/5a/62/865a62ce02bb38bd88851269a41959d1.jpg",
-		},
-		{
-			image_url:
-				"https://i.pinimg.com/236x/86/5a/62/865a62ce02bb38bd88851269a41959d1.jpg",
-		},
-		{
-			image_url:
-				"https://i.pinimg.com/236x/1e/b9/b9/1eb9b99f28502d3d4185390e997e8eb4.jpg",
-		},
-		{
-			image_url:
-				"https://i.pinimg.com/236x/1e/b9/b9/1eb9b99f28502d3d4185390e997e8eb4.jpg",
-		},
-		{
-			image_url:
-				"https://i.pinimg.com/236x/1e/b9/b9/1eb9b99f28502d3d4185390e997e8eb4.jpg",
-		},
-		{
-			image_url:
-				"https://i.pinimg.com/236x/8a/e2/b1/8ae2b1f094af8f87438fa952678620d3.jpg",
-		},
-	];
-
-	var list2 = [
-		{
-			image_url:
-				"https://i.pinimg.com/236x/1e/b9/b9/1eb9b99f28502d3d4185390e997e8eb4.jpg",
-		},
-		{
-			image_url:
-				"https://i.pinimg.com/236x/1e/b9/b9/1eb9b99f28502d3d4185390e997e8eb4.jpg",
-		},
-		{
-			image_url:
-				"https://i.pinimg.com/236x/1e/b9/b9/1eb9b99f28502d3d4185390e997e8eb4.jpg",
-		},
-		{
-			image_url:
-				"https://i.pinimg.com/236x/8a/e2/b1/8ae2b1f094af8f87438fa952678620d3.jpg",
-		},
-		{
-			image_url:
-				"https://i.pinimg.com/236x/86/5a/62/865a62ce02bb38bd88851269a41959d1.jpg",
-		},
-		{
-			image_url:
-				"https://i.pinimg.com/736x/77/00/44/77004487bd4a27aba64a4fadce35732b.jpg",
-		},
-		{
-			image_url:
-				"https://i.pinimg.com/236x/16/7f/e6/167fe63d4a008f8957c8e9406953af1f.jpg",
-		},
-		{
-			image_url:
-				"https://i.pinimg.com/236x/81/df/69/81df699b25ca1242a796f51397263d1a.jpg",
-		},
-		{
-			image_url:
-				"https://i.pinimg.com/236x/86/5a/62/865a62ce02bb38bd88851269a41959d1.jpg",
-		},
-		{
-			image_url:
-				"https://i.pinimg.com/236x/86/5a/62/865a62ce02bb38bd88851269a41959d1.jpg",
-		},
-	];
+	
+ 
 
 	return (
 		<div>
@@ -119,28 +346,28 @@ export const User_HomePage = () => {
 			</div>
 			<div className="home_page_container">
 				<div>
-					{list1.map((ele) => {
-						return <ImageCard image={ele.image_url} id={1} />;
+					{list.map((ele) => {
+						return <ImageCard image={ele.url} id={ele.id} />;
 					})}
 				</div>
 				<div>
-					{list2.map((ele) => {
-						return <ImageCard image={ele.image_url} id={1} />;
+					{list.map((ele) => {
+						return <ImageCard image={ele.url} id={ele.id} />;
 					})}
 				</div>
 				<div>
-					{list1.map((ele) => {
-						return <ImageCard image={ele.image_url} id={1} />;
+					{list.map((ele) => {
+						return <ImageCard image={ele.url} id={ele.id} />;
 					})}
 				</div>
 				<div>
-					{list2.map((ele) => {
-						return <ImageCard image={ele.image_url} id={1} />;
+					{list.map((ele) => {
+						return <ImageCard image={ele.url} id={ele.id} />;
 					})}
 				</div>
 				<div>
-					{list1.map((ele) => {
-						return <ImageCard image={ele.image_url} id={1} />;
+					{list.map((ele) => {
+						return <ImageCard image={ele.url} id={ele.id} />;
 					})}
 				</div>
 			</div>
