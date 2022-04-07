@@ -5,7 +5,7 @@ export const Grid = styled.div`
 	height: 100%;
 	width: 20%;
 	overflow: hidden;
-	
+	z-index: 1;
 	padding-top: ${(props) =>
 		props.one
 			? "5%"
@@ -50,4 +50,18 @@ export const Grid = styled.div`
 				: "10px"};
 				
 	 margin-right:${(props) => (props.seven ? "-130px" : "5px")};
+`;
+
+export const Faded = styled.div`
+	width: 100%;
+	height: 150px;
+	background: rgb(255, 255, 255);
+	background: linear-gradient(
+		0deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(233, 233, 233, 0) 100%
+	);
+	position: absolute;
+	bottom: 0;
+	margin-bottom: 0;
 `;
