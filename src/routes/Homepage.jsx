@@ -4,9 +4,9 @@ import React from "react";
 import "animate.css";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Grid } from "../components/HomepageComponents/Grid";
+import { Grid, Faded } from "../components/HomepageComponents/Grid";
 import { Login } from "../components/Login/Login";
-import ImageCard from "../components/ImageCard/ImageCard";
+import down from "../img/down.svg";
 const Button = styled.button`
 	background-color: ${(props) => (props.signup ? "#EFEFEF" : "#E60023")};
 	border-radius: 20px;
@@ -58,8 +58,6 @@ const list2 = [
 		image_url:
 			"https://i.pinimg.com/736x/77/00/44/77004487bd4a27aba64a4fadce35732b.jpg",
 	},
-	
-	
 ];
 const list3 = [
 	{
@@ -151,8 +149,6 @@ const list7 = [
 			"https://i.pinimg.com/736x/77/00/44/77004487bd4a27aba64a4fadce35732b.jpg",
 	},
 ];
-
-
 
 export const Homepage = () => {
 	const colors = ["#C28B00", "#0076D3", "#518C7B", "#507A57"];
@@ -336,7 +332,15 @@ export const Homepage = () => {
 					})}
 				</Grid>
 			</div>
-
+			<Faded>
+				<a href="#login">
+					<div class="pulse">
+						<span class="pulse-button">
+							<img src={down} alt="" />
+						</span>
+					</div>
+				</a>
+			</Faded>
 			<Login />
 		</div>
 	);
