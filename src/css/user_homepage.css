@@ -1,8 +1,9 @@
 .home_page_container{
     display: grid;
     grid-template-columns: repeat(5,1fr);
-    padding: 10px;
-    column-gap: 10px;
+    padding: 1% 8%;
+    column-gap: 1.5%;
+    gap: 1.5%;
 }
 
 

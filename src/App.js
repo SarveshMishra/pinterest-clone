@@ -4,8 +4,6 @@ import { User_HomePage } from "./routes/User_HomePage";
 
 function App() {
 	const isLogIn = useSelector((state) => state.global.isLogIn);
-	const userData = useSelector((state) => state.user.user_data);
-	console.log(userData);
 	if (localStorage.getItem("isLogIn") === null) {
 		localStorage.setItem("isLogIn", "false");
 	}
