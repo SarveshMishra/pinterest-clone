@@ -11,7 +11,7 @@ export const LoginWrapper = styled.div`
 	box-shadow: rgb(0 0 0 / 45%) 0px 2px 10px;
 	padding-bottom: 55px;
 	box-sizing: border-box;
-	top: 100%;
+	top: 120%;
 	left: 60%;
 	z-index: 100;
 	padding-bottom: 0px;
