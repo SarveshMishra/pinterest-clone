@@ -25,7 +25,10 @@ const PostPage = () => {
 			.then((res) => res.json())
 			.then((res) => setDetails(res))
 			.catch((err) => console.log(err));
+			
 	}, []);
+
+
 
 	if (details === null) {
 		return <h1>...Loading Data</h1>;
@@ -57,8 +60,15 @@ const PostPage = () => {
 			<div className="post_main">
 				<div className="post_middle">
 					<div className="post_left">
-						<div className="container container2">
-							<img src={image_url} alt="Snow" className="main_image" />
+					
+					<div>
+						{
+							details.map((ele)=>{
+								return(
+							<div className="container container2">
+							
+							<img src={ele.url} alt="Snow" className="main_image" />
+							
 							<div className="bottom_left">
 								<img src={right_up} alt="" />
 								<h3>View image</h3>
@@ -67,6 +77,15 @@ const PostPage = () => {
 								<img src={scan} alt="" />
 							</div>
 						</div>
+								)
+							})
+						}
+					</div>
+					 
+						
+
+
+
 					</div>
 					<div className="post_right">
 						<div className="icon_collection">
