@@ -24,7 +24,7 @@ export const Grid = styled.div`
 		border-radius: 20px;
 		
 		div{
-			height: 50%;
+			
 			width: 100%;
 			margin-bottom: 5%;
 

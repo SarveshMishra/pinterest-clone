@@ -11,16 +11,20 @@ export const LoginWrapper = styled.div`
 	box-shadow: rgb(0 0 0 / 45%) 0px 2px 10px;
 	padding-bottom: 55px;
 	box-sizing: border-box;
-	top: 120%;
+	top: 0%;
 	left: 60%;
 	z-index: 100;
 	padding-bottom: 0px;
 `;
 
 export const Overlay = styled.div`
-	background-color: rgba(0, 0, 0, 0.5);
-	height: 100%;
-	width: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	height: 100vh;
+	width: 100vw;
+	position: absolute;
+	top: 100%;
+	display: flex;
+	flex-direction: row-reverse;
 `;
 
 export const HeadText = styled.h1`
@@ -96,4 +100,18 @@ export const Business = styled.div`
 	font-size: 16px;
 	cursor: pointer;
 	margin-top: 100px;
+`;
+
+export const SignUpText = styled.div`
+	position: absolute;
+	
+	color: white;
+	align-self: center;
+	margin-left: 4%;
+	margin-bottom: 2%;
+	min-width: 30%;
+	max-width: 40%;
+	font-size: 70px;
+	font-weight: 500;
+	
 `;
