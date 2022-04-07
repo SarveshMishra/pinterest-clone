@@ -1,6 +1,6 @@
-import React, { useDebugValue } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { isLogIn } from "../../redux/global_data/action";
@@ -39,17 +39,17 @@ const Home_div = styled.button`
 	cursor: pointer;
 	padding: 1% 1.2%;
 	border-radius: 50px;
-	margin-left: auto;
+	margin: auto 0 auto auto;
 `;
 
 const Search_div = styled.div`
 	width: 80%;
 	color: rgb(118, 118, 118);
-	margin: auto 1%;
 	border-radius: 50px;
 	box-sizing: border-box;
-
+	margin-left: 5px;
 	height: 100%;
+	background-color: #efefef;
 
 	&:hover {
 		background-color: #e1e1e1;
@@ -81,6 +81,10 @@ const Drop_Down = styled.div`
 	margin: auto 0px;
 	// padding-left: 4%
 	cursor: pointer;
+	&:active {
+		background-color: #e1e1e1;
+	}
+	border-radius: 50%;
 `;
 const Input = styled.input`
 	height: 100%;
@@ -91,7 +95,7 @@ const Input = styled.input`
 	outline: none;
 	border: none;
 	font-size: 100%;
-	// margin-bottom: 100px;
+	background-color: #efefef;
 	border-radius: 50px;
 	&:hover {
 		background-color: #e1e1e1;
@@ -108,10 +112,11 @@ const Navbar_profile = styled.div`
 	img {
 		border-radius: 50%;
 	}
+	cursor: pointer;
 `;
 
 const DropDownMenu = styled.div`
-	width: 250px;
+	width: 300px;
 	border: 1px solid #e1e1e1;
 	background-color: #fff;
 	border-radius: 10px;
@@ -119,9 +124,11 @@ const DropDownMenu = styled.div`
 	top: 100%;
 	right: 0.5%;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-	padding: 2%;
+	padding: 1%;
+
 	font-size: 1.1rem;
 	box-sizing: border-box;
+
 	p {
 		font-size: 0.8rem;
 	}
@@ -129,25 +136,46 @@ const DropDownMenu = styled.div`
 		list-style-type: none;
 
 		li {
+			width: 100%;
+			height: 40px;
 			margin: 10px;
+			padding: 5px;
+			align-items: center;
 			cursor: pointer;
+			box-sizing: border-box;
+			&:hover {
+				background-color: #e1e1e1;
+				border-radius: 10px;
+			}
 		}
+	}
+`;
+const CurrentProfile = styled.div`
+	display: flex;
+	height: 100px;
+	width: 100%;
+	margin: 10px auto;
+	padding: 10px;
+	box-sizing: border-box;
+	&:hover {
+		background-color: #e1e1e1;
+		border-radius: 10px;
 	}
 `;
 
 export const Navbar = () => {
-	// const userData = useSelector((state) => state.user.user_data);
 	const logOut = useDispatch();
-	const userData = useDispatch();
+	const userLogOut = useDispatch();
 	const [active, setActive] = React.useState(true);
 	const [img_url, setImg_url] = React.useState("");
+	const [name, setName] = React.useState("");
+	const [email, setEmail] = React.useState("");
 	const [username, setUsername] = React.useState("");
 	const [toggleDropDown, setToggleDropDown] = React.useState(false);
-	// console.log(img_url);
 	const navigate = useNavigate();
 	React.useEffect(() => {
-		fetchUserProfile();
 		activeBtn();
+		fetchUserProfile();
 	}, []);
 	const fetchUserProfile = () => {
 		fetch(
@@ -159,13 +187,16 @@ export const Navbar = () => {
 			.then((data) => {
 				setImg_url(data[0].public_profile.profile_img);
 				setUsername(data[0].public_profile.username);
+				setEmail(data[0].public_profile.email);
+				setName(data[0].public_profile.name);
 			});
 	};
 	const handleLogOut = () => {
 		logOut(isLogIn(false));
 		localStorage.setItem("isLogIn", false);
 		localStorage.setItem("userID", "");
-		userData(addUserData([]));
+		localStorage.setItem("userData", "");
+		userLogOut(addUserData([]));
 		navigate("/");
 	};
 	const handleNavigation = () => {
@@ -185,7 +216,6 @@ export const Navbar = () => {
 				}}
 			>
 				<svg
-					class="gUZ lZJ U9O kVc"
 					height="24"
 					width="24"
 					viewBox="0 0 24 24"
@@ -212,7 +242,6 @@ export const Navbar = () => {
 			</Home_div>
 			<Search_div id="search_bar">
 				<Svg
-					class="gUZ B9u U9O kVc"
 					height="16"
 					width="16"
 					viewBox="0 0 24 24"
@@ -227,7 +256,6 @@ export const Navbar = () => {
 
 			<Notification>
 				<Svg
-					class="gUZ B9u U9O kVc"
 					height="24"
 					width="24"
 					viewBox="0 0 24 24"
@@ -242,7 +270,6 @@ export const Navbar = () => {
 
 			<Message>
 				<Svg
-					class="Hn_ gUZ B9u U9O kVc"
 					height="24"
 					width="24"
 					viewBox="0 0 24 24"
@@ -259,7 +286,6 @@ export const Navbar = () => {
 				<img onClick={handleNavigation} src={`${img_url}`} alt="" />
 				<Drop_Down onClick={() => setToggleDropDown(!toggleDropDown)}>
 					<Svg
-						class="gUZ B9u U9O kVc"
 						height="12"
 						width="12"
 						viewBox="0 0 24 24"
@@ -273,6 +299,15 @@ export const Navbar = () => {
 				</Drop_Down>
 				{toggleDropDown && (
 					<DropDownMenu>
+						<p>Currently in</p>
+						<CurrentProfile onClick={handleNavigation}>
+							<img src={`${img_url}`} alt="" />
+							<div style={{ marginLeft: "10px" }}>
+								<h3>{name}</h3>
+								<h5>Personal</h5>
+								<h5>{email}</h5>
+							</div>
+						</CurrentProfile>
 						<p>Your Account</p>
 						<ul>
 							<li>Add Account</li>

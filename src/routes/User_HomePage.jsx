@@ -20,9 +20,9 @@ export const User_HomePage = () => {
 		)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				dispatch(isLogIn(true));
-				userData(addUserData(data));
+				userData(addUserData(data[0]));
+				localStorage.setItem("userData", JSON.stringify(data[0]));
 			});
 	};
 	var list1 = [
@@ -112,50 +112,38 @@ export const User_HomePage = () => {
 		},
 	];
 
-  return (
-	  <div>
-	  <div><Navbar/></div>
-    <div className="home_page_container">
-    <div>
-       {
-          list1.map((ele)=>{
-          return <ImageCard image={ele.image_url} id={1}/>
-          })
-        }
-    </div>
-    <div>
-       {
-          list2.map((ele)=>{
-          return <ImageCard image={ele.image_url} id={1} />
-          })
-        }
-    </div>
-    <div>
-       {
-          list1.map((ele)=>{
-          return <ImageCard image={ele.image_url} id={1}/>
-          })
-        }
-    </div>
-    <div>
-       {
-          list2.map((ele)=>{
-          return <ImageCard image={ele.image_url} id={1}/>
-          })
-        }
-    </div>
-    <div>
-       {
-          list1.map((ele)=>{
-          return <ImageCard image={ele.image_url} id={1}/>
-          })
-        }
-    </div>
-     
-     
-    </div>
-	  </div>
-   
-  )
-}
- 
+	return (
+		<div>
+			<div>
+				<Navbar />
+			</div>
+			<div className="home_page_container">
+				<div>
+					{list1.map((ele) => {
+						return <ImageCard image={ele.image_url} id={1} />;
+					})}
+				</div>
+				<div>
+					{list2.map((ele) => {
+						return <ImageCard image={ele.image_url} id={1} />;
+					})}
+				</div>
+				<div>
+					{list1.map((ele) => {
+						return <ImageCard image={ele.image_url} id={1} />;
+					})}
+				</div>
+				<div>
+					{list2.map((ele) => {
+						return <ImageCard image={ele.image_url} id={1} />;
+					})}
+				</div>
+				<div>
+					{list1.map((ele) => {
+						return <ImageCard image={ele.image_url} id={1} />;
+					})}
+				</div>
+			</div>
+		</div>
+	);
+};

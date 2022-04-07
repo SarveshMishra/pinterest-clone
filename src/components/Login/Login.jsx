@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
 	Form,
@@ -15,7 +16,7 @@ export const Login = () => {
 		email: "",
 		password: "",
 	});
-
+	const navigate = useNavigate();
 	const handleChange = (e) => {
 		setFormData({ ...formData, [e.target.id]: e.target.value });
 	};
@@ -34,19 +35,12 @@ export const Login = () => {
 					localStorage.setItem("isLogIn", "true");
 					localStorage.setItem("userID", JSON.stringify(data[0].id));
 					alert(`Welcome ${data[0].name}`);
+					navigate("/");
 					window.location.reload();
 				} else {
 					alert("Invalid Email or Password");
 				}
 			});
-
-		// if (email === "abc@xyz.com" && password == "123") {
-		// 	dispatch(isLogIn(true));
-		// 	localStorage.setItem("isLogIn", "true");
-		// 	alert("Welcome");
-		// } else {
-		// 	alert("Invalid Email or Password");
-		// }
 	};
 
 	return (
