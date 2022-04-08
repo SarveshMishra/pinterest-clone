@@ -17,7 +17,6 @@ const ImageCardDelete = (probs) => {
 	const [modal, setModal] = useState(false);
 
 	const dispatch = useDispatch();
-	 
 
 	const toggleShare = () => {
 		setShare(!share);
@@ -39,32 +38,38 @@ const ImageCardDelete = (probs) => {
 		document.body.classList.remove("active-modal");
 	}
 
-	function deletePost(id)
-	{
+	function deletePost(id) {
+		
 		fetch("https://simple-json-db.herokuapp.com/saved_image" + "/" + id, {
-			method: 'DELETE'
-		}).then(() => {
-			console.log('removed');
-		}).catch(err => {
-			console.error(err)
-		}); 
-
+			method: "DELETE",
+		})
+			.then(() => {
+				console.log("removed");
+			})
+			.catch((err) => {
+				console.error(err);
+			});
 
 		fetch(`https://simple-json-db.herokuapp.com/saved_image`)
 			.then((res) => res.json())
 			.then((data) => {
 				dispatch(prevSavedImage(data));
 			});
+		let patchPayload = {
+			save_state: "Save",
+		};
+		
 	}
-
 
 	return (
 		<div>
 			<div className="container">
 				<img src={probs.image} alt="Snow" className="main_image" />
 				{/* <Link to={`/pin/${probs.id}`}> */}
-					<div className="top_right" onClick={()=>deletePost(probs.id)}>Delete</div>
-			{/* </Link> */}
+				<div className="top_right" onClick={() => deletePost(probs.id)}>
+					Delete
+				</div>
+				{/* </Link> */}
 				<div className="bottom_right">
 					<img src={upload_icon} alt="" onClick={toggleShare} />
 					<img src={more_icon} alt="" onClick={toggleModal} />
