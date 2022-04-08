@@ -2,13 +2,16 @@ import React from "react";
 import "./ImageCard.css";
 import more_icon from "../../img/more_icon.png";
 import upload_icon from "../../img/upload_icon.png";
-import whatsapp_icon from "../../img/whatsapp_icon.png";
+import whatsappnew from "../../img/whatsappnew.png";
 import facebook_icon from "../../img/facebook_icon.png";
+import twitter from "../../img/twitter.png";
 import search_icon from "../../img/search_icon.png";
+import gmail from "../../img/gmail.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { prevSavedImage } from "../../redux/user/action";
+
 const ImageCardDelete = (probs) => {
 	const [share, setShare] = useState(false);
 	const [modal, setModal] = useState(false);
@@ -75,7 +78,7 @@ const ImageCardDelete = (probs) => {
 						<h2>Send this Pin</h2>
 						<div className="social_container">
 							<div>
-								<img src={facebook_icon} alt="" />
+								<img src={whatsappnew} alt="" />
 								<p>WhatsApp</p>
 							</div>
 
@@ -85,19 +88,16 @@ const ImageCardDelete = (probs) => {
 							</div>
 
 							<div>
-								<img src={facebook_icon} alt="" />
+								<img src={twitter} alt="" />
 								<p>Twitter</p>
 							</div>
 
 							<div>
-								<img src={facebook_icon} alt="" />
+								<img src={gmail} alt="" />
 								<p>Email</p>
 							</div>
 
-							<div>
-								<img src={facebook_icon} alt="" />
-								<p>Email</p>
-							</div>
+						 
 						</div>
 
 						<div className="search_div">
