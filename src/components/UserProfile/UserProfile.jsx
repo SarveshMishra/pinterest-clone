@@ -48,47 +48,22 @@ export const Following = styled.div`
 `;
 
 export const Button_wrapper = styled.div`
+	display: flex;
 	margin-top: 3%;
+	justify-content: center;
 `;
-export const Share_button = styled.button`
-	height: 2.5rem;
-	width: 14%;
-	margin-left: 30%;
-	border: none;
-	font-size: 98%;
-	font-weight: 600;
-	border-radius: 50px;
-	background-color: #eeebf0;
-`;
-export const Edit_button = styled.button`
-	height: 2.5rem;
-	width: 20%;
-	margin-left: 8%;
-	border: none;
-	font-size: 98%;
-	font-weight: 600;
-	border-radius: 50px;
-	background-color: #eeebf0;
-`;
-export const Create_button = styled.button`
-	height: 2.5rem;
-	width: 14%;
-	margin-left: 35%;
-	border: none;
-	font-size: 98%;
-	font-weight: 600;
-	backgroung-color: none;
-	margin-top: 3%;
-`;
+
 export const Saved_button = styled.button`
 	height: 2.5rem;
-	width: auto;
+	padding: 10px;
 	margin-left: 3%;
 	border: none;
 	font-size: 98%;
 	font-weight: 600;
-	backgroung-color: none;
+	background-color: none;
 	margin-top: 3%;
+	border-radius: 10px;
+	align-items: center;
 `;
 
 export const Image_card = styled.div`
@@ -120,17 +95,17 @@ export const SavedImg = styled.div`
 	grid-template-columns: repeat(4, 1fr);
 	padding: 10px;
 
-  div{
-    height: 80%;
-    width: 80%;
-    display: flex;
-    margin: 10px;
-    justify-content: space-between;
-    wrap-content: no wrap;
-    padding-left: 50%;
-    img{
-      width: 100%;
-      height: 100%;
-    }
-  }
+	div {
+		height: 80%;
+		width: 80%;
+		display: flex;
+		margin: 10px;
+		justify-content: space-between;
+		wrap-content: no wrap;
+		padding-left: 50%;
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
 `;

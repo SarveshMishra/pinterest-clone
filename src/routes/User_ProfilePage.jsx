@@ -8,15 +8,12 @@ import {
 	Img,
 	User_Name,
 	Following,
-	Share_button,
-	Edit_button,
 	Button_wrapper,
-	Create_button,
 	Saved_button,
 	Image_card,
 	Middle_div,
 	Svg,
-	SavedImg
+	SavedImg,
 } from "../components/UserProfile/UserProfile";
 import { useSelector } from "react-redux";
 import { Navbar } from "../components/Navbar/Navbar";
@@ -100,12 +97,12 @@ export const User_ProfilePage = () => {
 
 					<Following>{following} following</Following>
 					<Button_wrapper>
-						<Share_button>Share</Share_button>
-						<Edit_button>Edit Profile</Edit_button>
+						<Saved_button>Share</Saved_button>
+						<Saved_button>Edit Profile</Saved_button>
 					</Button_wrapper>
 
 					<Button_wrapper>
-						<Create_button>Create</Create_button>
+						<Saved_button>Create</Saved_button>
 						<Saved_button>Saved</Saved_button>
 					</Button_wrapper>
 				</ProfileContainer>
@@ -140,7 +137,7 @@ export const User_ProfilePage = () => {
 							<Image_card>
 								<img src={image.img_url} alt="saved_image" />
 							</Image_card>
-						)
+						);
 					})}
 				</SavedImg>
 			</UserProfileWrapper>

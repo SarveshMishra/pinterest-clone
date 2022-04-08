@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { isLogIn } from "../redux/global_data/action";
-import { addUserData } from "../redux/user/action";
+import { addUserData, prevSavedImage } from "../redux/user/action";
 import { Navbar } from "../components/Navbar/Navbar";
-import {UserHomePage} from "../components/HomepageComponents/UserHomePage";
+import { UserHomePage } from "../components/HomepageComponents/UserHomePage";
 export const User_HomePage = () => {
 	const dispatch = useDispatch();
 	const userData = useDispatch();
@@ -22,11 +22,16 @@ export const User_HomePage = () => {
 			.then((data) => {
 				dispatch(isLogIn(true));
 				userData(addUserData(data[0]));
+
 				localStorage.setItem("userData", JSON.stringify(data[0]));
+			});
+		fetch(`https://simple-json-db.herokuapp.com/saved_image`)
+			.then((res) => res.json())
+			.then((data) => {
+				dispatch(prevSavedImage(data));
 			});
 	};
 
-	
 	return (
 		<div>
 			<div>
