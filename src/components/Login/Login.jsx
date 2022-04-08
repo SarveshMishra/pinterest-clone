@@ -24,7 +24,6 @@ export const Login = () => {
 	const { email, password } = formData;
 
 	const handleSubmit = () => {
-		console.log(formData);
 
 		fetch(
 			`https://simple-json-db.herokuapp.com/users?email=${email}&password=${password}`

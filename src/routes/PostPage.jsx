@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { User_HomePage } from "./User_HomePage";
+import { addUserSavedImage } from "../redux/user/action";
 import more_icon from "../img/more_icon.png";
 import upload_icon from "../img/upload_icon.png";
 import right_up from "../img/right-up.png";
@@ -12,10 +12,12 @@ import icon_owner from "../img/icon_owner.jpg";
 import "../components/ImageCard/ImageCard.css";
 import "../css/PostPage.css";
 import { Navbar } from "../components/Navbar/Navbar";
-
+import { UserHomePage } from "../components/HomepageComponents/UserHomePage";
+import { useDispatch } from "react-redux";
 const PostPage = () => {
 	const { prodId } = useParams();
 	const [details, setDetails] = useState(null);
+	const dispatch = useDispatch();
 	let image_url =
 		"https://i.pinimg.com/236x/26/21/df/2621df15c7d12b5cac85517887e8eca9.jpg";
 
@@ -34,8 +36,9 @@ const PostPage = () => {
 	}
 
 	const handleSave = () => {
+		let url = details[0].url;
 		let payload = {
-			img_url: `${image_url}`,
+			img_url: `${url}`,
 			liked: false,
 		};
 
@@ -45,7 +48,10 @@ const PostPage = () => {
 			body: JSON.stringify(payload),
 		})
 			.then((res) => res.json())
-			.then((res) => console.log(res));
+			.then((res) => {
+				console.log(res);
+				dispatch(addUserSavedImage(res));
+			});
 		document.querySelector(".save").innerText = "Saved";
 	};
 
@@ -57,15 +63,22 @@ const PostPage = () => {
 			<div className="post_main">
 				<div className="post_middle">
 					<div className="post_left">
-						<div className="container container2">
-							<img src={image_url} alt="Snow" className="main_image" />
-							<div className="bottom_left">
-								<img src={right_up} alt="" />
-								<h3>View image</h3>
-							</div>
-							<div className="bottom_right_new">
-								<img src={scan} alt="" />
-							</div>
+						<div>
+							{details.map((ele) => {
+								return (
+									<div className="container container2">
+										<img src={ele.url} alt="Snow" className="main_image" />
+
+										<div className="bottom_left">
+											<img src={right_up} alt="" />
+											<h3>View image</h3>
+										</div>
+										<div className="bottom_right_new">
+											<img src={scan} alt="" />
+										</div>
+									</div>
+								);
+							})}
 						</div>
 					</div>
 					<div className="post_right">
@@ -140,7 +153,7 @@ const PostPage = () => {
 
 				<div className="post_bottom">
 					<h3>More like this</h3>
-					<User_HomePage />
+					<UserHomePage />
 				</div>
 			</div>
 		</div>
