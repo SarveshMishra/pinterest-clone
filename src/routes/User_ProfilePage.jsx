@@ -81,6 +81,7 @@ const User_name = userData.public_profile.username;
 const following = userData.public_profile.following.length;
 
 export const User_ProfilePage = () => {
+	
 	const userData = useSelector((state) => state.user.saved_image);
 
 	console.log(userData);
