@@ -16,8 +16,9 @@ import {
 	Image_card,
 	Middle_div,
 	Svg,
+	SavedImg
 } from "../components/UserProfile/UserProfile";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Navbar } from "../components/Navbar/Navbar";
 
 let userData = {
@@ -80,10 +81,10 @@ const Profile_img = userData.public_profile.profile_img;
 const His_Name = userData.public_profile.name;
 const User_name = userData.public_profile.username;
 const following = userData.public_profile.following.length;
-const Img_src = userData.saved_image[0].img_url;
-export const User_ProfilePage = () => {
-	// const userData = useSelector((state) => state.user.user_data);
 
+export const User_ProfilePage = () => {
+	const userData = useSelector((state) => state.user.saved_image);
+	console.log(userData);
 	return (
 		<>
 			<Navbar />
@@ -133,10 +134,15 @@ export const User_ProfilePage = () => {
 						<path d="M22 10h-8V2a2 2 0 0 0-4 0v8H2a2 2 0 0 0 0 4h8v8a2 2 0 0 0 4 0v-8h8a2 2 0 0 0 0-4"></path>
 					</Svg>
 				</Middle_div>
-
-				<Image_card>
-					<img src={Img_src} alt="" />
-				</Image_card>
+				<SavedImg>
+					{userData.map((image) => {
+						return (
+							<Image_card>
+								<img src={image.img_url} alt="saved_image" />
+							</Image_card>
+						)
+					})}
+				</SavedImg>
 			</UserProfileWrapper>
 		</>
 	);

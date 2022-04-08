@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { isLogIn } from "../../redux/global_data/action";
-import { addUserData } from "../../redux/user/action";
+import { addUserData, addUserSavedImage } from "../../redux/user/action";
 import "./navbar.css";
 const Navbar_wrapper = styled.div`
 	// background-color: #cecece;
@@ -166,6 +166,7 @@ const CurrentProfile = styled.div`
 export const Navbar = () => {
 	const logOut = useDispatch();
 	const userLogOut = useDispatch();
+	const savedImage = useDispatch();
 	const [active, setActive] = React.useState(true);
 	const [img_url, setImg_url] = React.useState("");
 	const [name, setName] = React.useState("");
@@ -197,6 +198,7 @@ export const Navbar = () => {
 		localStorage.setItem("userID", "");
 		localStorage.setItem("userData", "");
 		userLogOut(addUserData([]));
+		savedImage(addUserSavedImage([]))
 		navigate("/");
 	};
 	const handleNavigation = () => {
