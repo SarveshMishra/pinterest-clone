@@ -76,7 +76,7 @@ margin-left: 35%;
 border : none;
 font-size : 98%;
 font-weight : 600;
-backgroung-color :none;
+background-color :white;
 margin-top : 3%
 
 `
@@ -87,7 +87,7 @@ margin-left : 3%;
 border : none;
 font-size : 98%;
 font-weight : 600;
-backgroung-color :none;
+background-color : white;
 margin-top : 3%;
 `
 

@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { isLogIn } from "../../redux/global_data/action";
 import { addUserData } from "../../redux/user/action";
 import "./navbar.css";
+
 const Navbar_wrapper = styled.div`
 	// background-color: #cecece;
 	position: sticky;
@@ -163,6 +164,49 @@ const CurrentProfile = styled.div`
 	}
 `;
 
+const SearchResultsDiv = styled.div`
+// background-color : #cecece;
+margin : 0px 14% 0px 17%;
+
+`;
+const HeadingDiv = styled.div`
+	margin-top : 50px;
+	margin-bottom : -20px;
+`;
+
+const ImageCard = styled.div`
+display:flex;
+flex-direction : row;
+`
+const ImageDiv = styled.div`
+width : 12rem;
+height : 5rem;
+border-radius : 18px;
+box-sizing : border-box;
+text-align:center;
+font-weight: 700;
+position : relative;
+margin-left : 2rem;
+
+img{
+	border-radius : 18px;
+	display: block;
+	opacity : 0.3;
+	width : 12rem;
+    height : 5rem;
+	margin-top : 0px;
+	
+}
+h3{
+	position : relative;
+	top : 3.5rem;
+	bottom : 0px;
+	font-weight: 700;
+	// color : white;
+	opacity : 100;
+}
+`
+
 export const Navbar = () => {
 	const logOut = useDispatch();
 	const userLogOut = useDispatch();
@@ -173,6 +217,7 @@ export const Navbar = () => {
 	const [username, setUsername] = React.useState("");
 	const [toggleDropDown, setToggleDropDown] = React.useState(false);
 	const navigate = useNavigate();
+	const [SearchBarActive , setSearchBarActive] = React.useState(true);
 	React.useEffect(() => {
 		activeBtn();
 		fetchUserProfile();
@@ -208,7 +253,7 @@ export const Navbar = () => {
 		setActive(flag);
 	};
 
-	return (
+	return (<>
 		<Navbar_wrapper>
 			<Logo_wrapper
 				onClick={() => {
@@ -326,5 +371,43 @@ export const Navbar = () => {
 				)}
 			</Navbar_profile>
 		</Navbar_wrapper>
+		<SearchResultsDiv className="SearchResultsDiv" style = { {"display" : `${SearchBarActive ? "block" : "none"}`}}>
+		<HeadingDiv>
+					Ideas for you
+		</HeadingDiv>
+		<ImageCard>
+					<ImageDiv style ={{"margin-left" : "0px"}}>
+						<h3>Closet Layout</h3>
+						<img src="https://i.pinimg.com/236x/26/21/df/2621df15c7d12b5cac85517887e8eca9.jpg" alt="" />
+						
+					</ImageDiv>
+					<ImageDiv>
+						<h3>Closet Layout</h3>
+						<img src="https://i.pinimg.com/236x/26/21/df/2621df15c7d12b5cac85517887e8eca9.jpg" alt="" />
+						
+					</ImageDiv>
+		</ImageCard>
+		<HeadingDiv>
+					Popular on pinterest
+		</HeadingDiv>
+		<ImageCard>
+					<ImageDiv style ={{"margin-left" : "0px"}}>
+						<h3>Closet Layout</h3>
+						<img src="https://i.pinimg.com/236x/26/21/df/2621df15c7d12b5cac85517887e8eca9.jpg" alt="" />
+						
+					</ImageDiv>
+					<ImageDiv>
+						<h3>Closet Layout</h3>
+						<img src="https://i.pinimg.com/236x/26/21/df/2621df15c7d12b5cac85517887e8eca9.jpg" alt="" />
+						
+					</ImageDiv>
+					<ImageDiv>
+						<h3>Closet Layout</h3>
+						<img src="https://i.pinimg.com/236x/26/21/df/2621df15c7d12b5cac85517887e8eca9.jpg" alt="" />
+						
+					</ImageDiv>
+		</ImageCard>
+	</SearchResultsDiv>
+		</>
 	);
 };
