@@ -1,10 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { isLogIn } from "../../redux/global_data/action";
-import { addUserData, addUserSavedImage } from "../../redux/user/action";
+import { logOutUser } from "../../redux/user/action";
 import "./navbar.css";
 const Navbar_wrapper = styled.div`
 	// background-color: #cecece;
@@ -197,8 +197,7 @@ export const Navbar = () => {
 		localStorage.setItem("isLogIn", false);
 		localStorage.setItem("userID", "");
 		localStorage.setItem("userData", "");
-		userLogOut(addUserData([]));
-		savedImage(addUserSavedImage([]))
+		userLogOut(logOutUser());
 		navigate("/");
 	};
 	const handleNavigation = () => {
