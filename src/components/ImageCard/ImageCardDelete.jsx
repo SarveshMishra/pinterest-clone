@@ -11,7 +11,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { prevSavedImage } from "../../redux/user/action";
+import { saveAs } from 'file-saver'
 
+ 
 const ImageCardDelete = (probs) => {
 	const [share, setShare] = useState(false);
 	const [modal, setModal] = useState(false);
@@ -61,6 +63,28 @@ const ImageCardDelete = (probs) => {
 		
 	}
 
+	const downloadImage = () => {
+		saveAs(probs.image, 'image.jpg') // Put your image url here.
+		//window.open('https://web.whatsapp.com://send?text=This is whatsapp sharing example using button')  
+	 //   window.open(`facebook://send?text=${probs.image}?v=ohpCMpderow`);  
+
+	}
+
+	const whatsappShare=()=>{
+	    window.open(`whatsapp://send?text=${probs.image}?v=ohpCMpderow`);  
+ 	}
+
+	const facebookShare=()=>{
+	    window.open(`https://www.facebook.com/?imageurl=${probs.image}`);
+	}
+	const twitterShare=()=>{
+	    window.open(`https://twitter.com/?imageurl=${probs.image}`);
+	}
+
+
+
+	 
+
 	return (
 		<div>
 			<div className="container">
@@ -81,19 +105,19 @@ const ImageCardDelete = (probs) => {
 					<div onClick={toggleShare} className="overlay"></div>
 					<div className="modal-content">
 						<h2>Send this Pin</h2>
-						<div className="social_container">
+						<div className="social_container" onClick={whatsappShare}>
 							<div>
 								<img src={whatsappnew} alt="" />
 								<p>WhatsApp</p>
 							</div>
 
-							<div>
+							<div onClick={facebookShare}>
 								<img src={facebook_icon} alt="" />
 								<p>Facebook</p>
 							</div>
 
 							<div>
-								<img src={twitter} alt="" />
+								<img src={twitter} alt="" onClick={twitterShare} />
 								<p>Twitter</p>
 							</div>
 
@@ -127,11 +151,11 @@ const ImageCardDelete = (probs) => {
 							<div>
 								<h3>Hide Pin</h3>
 							</div>
-
-							<div>
+							{/* <a href={probs.image} download  > */}
+							<div onClick={downloadImage}>
 								<h3>Download image</h3>
 							</div>
-
+							{/* </a> */}
 							<div>
 								<h3>Report Pin</h3>
 							</div>
