@@ -56,6 +56,7 @@ const ImageCardDelete = (probs) => {
 			save_state: "Save",
 		};
 		
+	}
 
 	return (
 		<div>
