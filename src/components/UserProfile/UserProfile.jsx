@@ -48,12 +48,15 @@ export const Following = styled.div`
 `;
 
 export const Button_wrapper = styled.div`
+
 	display: flex;
 	margin-top: 3%;
 	justify-content: center;
 `;
 
+
 export const Saved_button = styled.button`
+
 	height: 2.5rem;
 	padding: 10px;
 	margin-left: 3%;
