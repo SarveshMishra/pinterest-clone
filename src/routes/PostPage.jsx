@@ -18,14 +18,16 @@ const PostPage = () => {
 	const { prodId } = useParams();
 	const [details, setDetails] = useState(null);
 	const dispatch = useDispatch();
-	let image_url =
-		"https://i.pinimg.com/236x/26/21/df/2621df15c7d12b5cac85517887e8eca9.jpg";
+	const [save, setSave] = useState("Save");
 
 	let owner = "mangesh pandit";
 	useEffect(() => {
 		fetch(`https://simple-json-db.herokuapp.com/posts?id=${prodId}`)
 			.then((res) => res.json())
-			.then((res) => setDetails(res))
+			.then((res) => {
+				setDetails(res)
+				setSave(res[0].save_state);
+			})
 			.catch((err) => console.log(err));
 	}, []);
 
@@ -37,9 +39,20 @@ const PostPage = () => {
 
 	const handleSave = () => {
 		let url = details[0].url;
+		setSave("Saved");
+		
+		let patchPayload = {
+			save_state: "Saved",
+		};
+		fetch(`https://simple-json-db.herokuapp.com/posts/${prodId}`, {
+			method: "PATCH",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(patchPayload),
+		}).then((res) => res.json()).catch((err) => console.log(err));
 		let payload = {
 			img_url: `${url}`,
 			liked: false,
+			
 		};
 
 		fetch(`https://simple-json-db.herokuapp.com/saved_image`, {
@@ -52,7 +65,7 @@ const PostPage = () => {
 				console.log(res);
 				dispatch(addUserSavedImage(res));
 			});
-		document.querySelector(".save").innerText = "Saved";
+		// document.querySelector(".save").innerText = "Saved";
 	};
 
 	return (
@@ -94,7 +107,7 @@ const PostPage = () => {
 									<img src={down_arrow} alt="" />
 								</div>
 								<div onClick={handleSave} className="save">
-									Save
+									{save}
 								</div>
 							</div>
 						</div>
