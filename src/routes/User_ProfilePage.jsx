@@ -17,8 +17,8 @@ import {
 } from "../components/UserProfile/UserProfile";
 import { useSelector } from "react-redux";
 import { Navbar } from "../components/Navbar/Navbar";
-import ImageCardDelete from "../components/ImageCard/ImageCardDelete"
-import "../css/user_profilepage.css"
+import ImageCardDelete from "../components/ImageCard/ImageCardDelete";
+import "../css/user_profilepage.css";
 let userData = {
 	id: 1,
 	name: "Leanne Graham",
@@ -83,7 +83,6 @@ const following = userData.public_profile.following.length;
 export const User_ProfilePage = () => {
 	const userData = useSelector((state) => state.user.saved_image);
 
-
 	console.log(userData);
 	return (
 		<>
@@ -134,19 +133,17 @@ export const User_ProfilePage = () => {
 						<path d="M22 10h-8V2a2 2 0 0 0-4 0v8H2a2 2 0 0 0 0 4h8v8a2 2 0 0 0 4 0v-8h8a2 2 0 0 0 0-4"></path>
 					</Svg>
 				</Middle_div>
-				 
-				<div className="save_main">
 
-				<div className="save_div">
-					{userData.map((ele) => {
-						return (
-							//image.img_url
-							  <ImageCardDelete image={ele.img_url} id={ele.id} />
-						);
-					})}
+				<div className="save_main">
+					<div className="save_div">
+						{userData.map((ele) => {
+							return (
+								//image.img_url
+								<ImageCardDelete image={ele.img_url} id={ele.id} />
+							);
+						})}
 					</div>
-					</div>
-				 
+				</div>
 			</UserProfileWrapper>
 		</>
 	);
