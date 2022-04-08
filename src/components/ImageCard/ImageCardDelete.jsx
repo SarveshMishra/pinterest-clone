@@ -9,7 +9,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { prevSavedImage } from "../../redux/user/action";
-const ImageCardDelete = (probs) => {
+const ImageCardDelete = (props) => {
 	const [share, setShare] = useState(false);
 	const [modal, setModal] = useState(false);
 
@@ -37,7 +37,7 @@ const ImageCardDelete = (probs) => {
 
 	function deletePost(id) {
 		
-		fetch("https://simple-json-db.herokuapp.com/saved_image" + "/" + id, {
+		fetch(`https://simple-json-db.herokuapp.com/saved_image/${id}`, {
 			method: "DELETE",
 		})
 			.then(() => {
@@ -61,12 +61,12 @@ const ImageCardDelete = (probs) => {
 	return (
 		<div>
 			<div className="container">
-				<img src={probs.image} alt="Snow" className="main_image" />
-				{/* <Link to={`/pin/${probs.id}`}> */}
-				<div className="top_right" onClick={() => deletePost(probs.id)}>
+				<img src={props.image} alt="Snow" className="main_image" />
+			
+				<div className="top_right" onClick={() => deletePost(props.id)}>
 					Delete
 				</div>
-				{/* </Link> */}
+				
 				<div className="bottom_right">
 					<img src={upload_icon} alt="" onClick={toggleShare} />
 					<img src={more_icon} alt="" onClick={toggleModal} />

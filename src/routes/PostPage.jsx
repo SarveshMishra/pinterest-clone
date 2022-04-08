@@ -22,7 +22,9 @@ const PostPage = () => {
 
 	let owner = "mangesh pandit";
 	useEffect(() => {
-		fetch(`https://simple-json-db.herokuapp.com/posts?id=${prodId}`)
+		fetch(
+			`https://api.unsplash.com/photos/${prodId}/download/?client_id=Y7pKIMKs4x48WZ6qUcDpluSfjqr12Fnjh7sEIUYP-0g`
+		)
 			.then((res) => res.json())
 			.then((res) => {
 				setDetails(res);
@@ -50,22 +52,25 @@ const PostPage = () => {
 	}
 
 	const handleSave = () => {
-		let url = details[0].url;
+		let url = details.url;
 		setSave("Saved");
 
-		let patchPayload = {
-			save_state: "Saved",
-		};
-		fetch(`https://simple-json-db.herokuapp.com/posts/${prodId}`, {
-			method: "PATCH",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(patchPayload),
-		})
-			.then((res) => res.json())
-			.catch((err) => console.log(err));
+		// let patchPayload = {
+		// 	save_state: "Saved",
+
+		// };
+		// fetch(`https://simple-json-db.herokuapp.com/posts/${prodId}`, {
+		// 	method: "PATCH",
+		// 	headers: { "Content-Type": "application/json" },
+		// 	body: JSON.stringify(patchPayload),
+		// })
+		// 	.then((res) => res.json())
+		// 	.catch((err) => console.log(err));
+		console.log(prodId);
 		let payload = {
 			img_url: `${url}`,
 			liked: false,
+			id: prodId,
 		};
 
 		fetch(`https://simple-json-db.herokuapp.com/saved_image`, {
@@ -90,21 +95,17 @@ const PostPage = () => {
 				<div className="post_middle">
 					<div className="post_left">
 						<div>
-							{details.map((ele) => {
-								return (
-									<div className="container container2">
-										<img src={ele.url} alt="Snow" className="main_image" />
+							<div className="container container2">
+								<img src={details.url} alt="Snow" className="main_image" />
 
-										<div className="bottom_left">
-											<img src={right_up} alt="" />
-											<h3>View image</h3>
-										</div>
-										<div className="bottom_right_new">
-											<img src={scan} alt="" />
-										</div>
-									</div>
-								);
-							})}
+								<div className="bottom_left">
+									<img src={right_up} alt="" />
+									<h3>View image</h3>
+								</div>
+								<div className="bottom_right_new">
+									<img src={scan} alt="" />
+								</div>
+							</div>
 						</div>
 					</div>
 					<div className="post_right">
