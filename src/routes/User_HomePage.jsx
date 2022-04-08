@@ -6,6 +6,7 @@ import { addUserData, prevSavedImage } from "../redux/user/action";
 import { Navbar } from "../components/Navbar/Navbar";
 import { UserHomePage } from "../components/HomepageComponents/UserHomePage";
 export const User_HomePage = () => {
+
 	const dispatch = useDispatch();
 	const userData = useDispatch();
 
