@@ -10,8 +10,10 @@ export const UserHomePage = () => {
 	const [list3, setList3] = React.useState([]);
 	const [list4, setList4] = React.useState([]);
 	const word = randomWords();
-	const client_id = "Y7pKIMKs4x48WZ6qUcDpluSfjqr12Fnjh7sEIUYP-0g";
+	// const client_id = "Y7pKIMKs4x48WZ6qUcDpluSfjqr12Fnjh7sEIUYP-0g";
+	const client_id = "6o4W2NGe0d1CNDWSTfieOIFcZ5OFcx2SQ_Mrm9KcBiU";
 	// const client_id = "6o4W2NGe0d1CNDWSTfieOIFcZ5OFcx2SQ_Mrm9KcBiU";
+
 	React.useEffect(() => {
 		fetch(
 			`https://api.unsplash.com/photos/random/?client_id=${client_id}&count=30&topics=${word}`
