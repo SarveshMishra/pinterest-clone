@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { addUserSavedImage } from "../redux/user/action";
+import { addUserSavedImage,addTodo} from "../redux/user/action";
 import more_icon from "../img/more_icon.png";
 import upload_icon from "../img/upload_icon.png";
 import right_up from "../img/right-up.png";
@@ -13,12 +13,24 @@ import "../components/ImageCard/ImageCard.css";
 import "../css/PostPage.css";
 import { Navbar } from "../components/Navbar/Navbar";
 import { UserHomePage } from "../components/HomepageComponents/UserHomePage";
-import { useDispatch } from "react-redux";
+ import { useSelector,useDispatch } from 'react-redux'
+
 const PostPage = () => {
 	const { prodId } = useParams();
 	const [details, setDetails] = useState(null);
 	const dispatch = useDispatch();
 	const [save, setSave] = useState("Save");
+	
+	const [chat,setChat]=useState()
+	const list_state=useSelector((state)=>state.todoreducer.list)
+
+
+
+
+ 
+
+	  
+
 
 	let owner = "mangesh pandit";
 	useEffect(() => {
@@ -85,6 +97,15 @@ const PostPage = () => {
 			});
 		// document.querySelector(".save").innerText = "Saved";
 	};
+
+	const handleKeyDown = (event) => {
+		if (event.key === 'Enter') 
+		  {
+		    dispatch(addTodo(chat),setChat(""))
+		  }
+	  }
+
+ 
 
 	return (
 		<div>
@@ -170,10 +191,28 @@ const PostPage = () => {
 								</div>
 
 								<div className="chat_input">
-									<input type="text" name="" id="" />
+									<input type="text" name="" id="" value={chat} 
+									onChange={(e)=>setChat(e.target.value)}
+									onKeyDown={handleKeyDown} />
 									<img src={icon_owner} alt="" />
+			
 								</div>
 							</div>
+
+							<div className="chat_main">
+								{
+									list_state.map((ele)=>{
+										return (
+											<div className="chatsub_div">
+												 <img src={icon_owner} alt="" className="chaticon" />
+										     	 <p>{ele.data}</p>
+												 <p>Sarvesh Mishra</p>
+											</div>
+											)
+									})
+								}
+								
+								</div>
 						</div>
 					</div>
 				</div>

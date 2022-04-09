@@ -2,13 +2,17 @@ import React from "react";
 import "./ImageCard.css";
 import more_icon from "../../img/more_icon.png";
 import upload_icon from "../../img/upload_icon.png";
-import whatsapp_icon from "../../img/whatsapp_icon.png";
+import whatsappnew from "../../img/whatsappnew.png";
 import facebook_icon from "../../img/facebook_icon.png";
+import twitter from "../../img/twitter.png";
 import search_icon from "../../img/search_icon.png";
+import gmail from "../../img/gmail.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { prevSavedImage } from "../../redux/user/action";
+import { saveAs } from 'file-saver'
+
 const ImageCardDelete = (props) => {
 	const [share, setShare] = useState(false);
 	const [modal, setModal] = useState(false);
@@ -56,6 +60,28 @@ const ImageCardDelete = (props) => {
 		
 	}
 
+	const downloadImage = () => {
+		saveAs(props.image, 'image.jpg') // Put your image url here.
+		//window.open('https://web.whatsapp.com://send?text=This is whatsapp sharing example using button')  
+	 //   window.open(`facebook://send?text=${props.image}?v=ohpCMpderow`);  
+
+	}
+
+	const whatsappShare=()=>{
+	    window.open(`whatsapp://send?text=${props.image}?v=ohpCMpderow`);  
+ 	}
+
+	const facebookShare=()=>{
+	    window.open(`https://www.facebook.com/?imageurl=${props.image}`);
+	}
+	const twitterShare=()=>{
+	    window.open(`https://twitter.com/?imageurl=${props.image}`);
+	}
+
+
+
+	 
+
 	return (
 		<div>
 			<div className="container">
@@ -76,31 +102,28 @@ const ImageCardDelete = (props) => {
 					<div onClick={toggleShare} className="overlay"></div>
 					<div className="modal-content">
 						<h2>Send this Pin</h2>
-						<div className="social_container">
+						<div className="social_container" onClick={whatsappShare}>
 							<div>
-								<img src={facebook_icon} alt="" />
+								<img src={whatsappnew} alt="" />
 								<p>WhatsApp</p>
 							</div>
 
-							<div>
+							<div onClick={facebookShare}>
 								<img src={facebook_icon} alt="" />
 								<p>Facebook</p>
 							</div>
 
 							<div>
-								<img src={facebook_icon} alt="" />
+								<img src={twitter} alt="" onClick={twitterShare} />
 								<p>Twitter</p>
 							</div>
 
 							<div>
-								<img src={facebook_icon} alt="" />
+								<img src={gmail} alt="" />
 								<p>Email</p>
 							</div>
 
-							<div>
-								<img src={facebook_icon} alt="" />
-								<p>Email</p>
-							</div>
+						 
 						</div>
 
 						<div className="search_div">
@@ -125,11 +148,11 @@ const ImageCardDelete = (props) => {
 							<div>
 								<h3>Hide Pin</h3>
 							</div>
-
-							<div>
+							{/* <a href={props.image} download  > */}
+							<div onClick={downloadImage}>
 								<h3>Download image</h3>
 							</div>
-
+							{/* </a> */}
 							<div>
 								<h3>Report Pin</h3>
 							</div>
