@@ -36,7 +36,7 @@ const ImageCardDelete = (props) => {
 	}
 
 	function deletePost(id) {
-		
+		console.log(id)
 		fetch(`https://simple-json-db.herokuapp.com/saved_image/${id}`, {
 			method: "DELETE",
 		})
@@ -52,9 +52,7 @@ const ImageCardDelete = (props) => {
 			.then((data) => {
 				dispatch(prevSavedImage(data));
 			});
-		let patchPayload = {
-			save_state: "Save",
-		};
+		
 		
 	}
 

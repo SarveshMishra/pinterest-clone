@@ -20,12 +20,118 @@ import { Navbar } from "../components/Navbar/Navbar";
 import ImageCardDelete from "../components/ImageCard/ImageCardDelete";
 import "../css/user_profilepage.css";
 
+const userData = {
+	id: 1,
+	name: "Sarvesh Mishra",
+	username: "smishra",
+	email: "officialsmishra@gmail.com",
+	password: 123,
+	saved_image: [
+		{
+			id: 1,
+			img_url:
+				"https://i.pinimg.com/236x/26/21/df/2621df15c7d12b5cac85517887e8eca9.jpg",
+			liked: true,
+			image_tag: [
+				{
+					id: 1,
+					tag: "tag1",
+				},
+				{
+					id: 2,
+					tag: "tag2",
+				},
+			],
+		},
+	],
+	public_profile: {
+		profile_img:
+			"https://dsm01pap006files.storage.live.com/y4mQtWseafDY7LK1jUMAx_avTTyjhDJ6d9cSQ36-j5o36k7_SlNoM8FhIV3Ol-bfrb-LrkjMtOik5GwtIPzXSMmuE32pv-pKQiFSEPu-uTRxPozdqfkb1advMPaUHKrCOToh5-MjM9jXQW1q6haU4bBwU9XTm8lwHawshzGm4mNLkOWtYbkMF5fAtgGSOilqSss?width=256&height=256&cropmode=none",
+		name: "Sarvesh Mishra",
+		username: "smishra",
+		email: "officialsmishra@gmail.com",
+		age: 25,
+		about: "Hello World",
+		website: "https://www.google.com/",
+		pronoun: "he/him",
+		following: [
+			{
+				id: 1,
+				username: "Bret",
+				email: "abc@gmail.com",
+			},
+			{
+				id: 1,
+				username: "Bret",
+				email: "abc@gmail.com",
+			},
+			{
+				id: 1,
+				username: "Bret",
+				email: "abc@gmail.com",
+			},
+			{
+				id: 1,
+				username: "Bret",
+				email: "abc@gmail.com",
+			},
+		],
+		followers: [
+			{
+				id: 1,
+				username: "Bret",
+				email: "",
+			},
+			{
+				id: 1,
+				username: "Bret",
+				email: "",
+			},
+			{
+				id: 1,
+				username: "Bret",
+				email: "",
+			},
+			{
+				id: 1,
+				username: "Bret",
+				email: "",
+			},
+			{
+				id: 1,
+				username: "Bret",
+				email: "",
+			},
+			{
+				id: 1,
+				username: "Bret",
+				email: "",
+			},
+			{
+				id: 1,
+				username: "Bret",
+				email: "",
+			},
+		],
+	},
+	personal_info: {
+		gender: "male",
+		country: "India",
+		language: "English",
+	},
+};
+
+const profile_img = userData.public_profile.profile_img;
+const name = userData.public_profile.name;
+const username = userData.public_profile.username;
+const following = userData.public_profile.following;
+
 export const User_ProfilePage = () => {
 	const userSavedImage = useSelector((state) => state.user.saved_image);
-	const userData = useSelector((state) => state.user.user_data);
-	const {
-		public_profile: { profile_img, name, username, following },
-	} = userData;
+	// const userData = useSelector((state) => state.user.user_data);
+	// const {
+	// 	public_profile: { profile_img, name, username, following },
+	// } = userData;
 	console.log(userSavedImage);
 	return (
 		<>
