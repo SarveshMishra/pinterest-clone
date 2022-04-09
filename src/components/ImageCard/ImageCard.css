@@ -235,6 +235,11 @@ div.container:hover div.bottom_right {
  }
  .download_container h3{
     padding: 10px;
+    border: 2px solid rgba(135, 207, 235, 0);
+ }
+ .download_container a{
+     text-decoration: none;
+     color: black;
  }
 
  .download_container{

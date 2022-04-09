@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { addUserSavedImage } from "../redux/user/action";
+import { addUserSavedImage,addTodo} from "../redux/user/action";
 import more_icon from "../img/more_icon.png";
 import upload_icon from "../img/upload_icon.png";
 import right_up from "../img/right-up.png";
@@ -13,16 +13,30 @@ import "../components/ImageCard/ImageCard.css";
 import "../css/PostPage.css";
 import { Navbar } from "../components/Navbar/Navbar";
 import { UserHomePage } from "../components/HomepageComponents/UserHomePage";
-import { useDispatch } from "react-redux";
+ import { useSelector,useDispatch } from 'react-redux'
+
 const PostPage = () => {
 	const { prodId } = useParams();
 	const [details, setDetails] = useState(null);
 	const dispatch = useDispatch();
 	const [save, setSave] = useState("Save");
+	
+	const [chat,setChat]=useState()
+	const list_state=useSelector((state)=>state.todoreducer.list)
+
+
+
+
+ 
+
+	  
+
 
 	let owner = "mangesh pandit";
 	useEffect(() => {
-		fetch(`https://simple-json-db.herokuapp.com/posts?id=${prodId}`)
+		fetch(
+			`https://api.unsplash.com/photos/${prodId}/download/?client_id=Y7pKIMKs4x48WZ6qUcDpluSfjqr12Fnjh7sEIUYP-0g`
+		)
 			.then((res) => res.json())
 			.then((res) => {
 				setDetails(res);
@@ -50,22 +64,25 @@ const PostPage = () => {
 	}
 
 	const handleSave = () => {
-		let url = details[0].url;
+		let url = details.url;
 		setSave("Saved");
 
-		let patchPayload = {
-			save_state: "Saved",
-		};
-		fetch(`https://simple-json-db.herokuapp.com/posts/${prodId}`, {
-			method: "PATCH",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(patchPayload),
-		})
-			.then((res) => res.json())
-			.catch((err) => console.log(err));
+		// let patchPayload = {
+		// 	save_state: "Saved",
+
+		// };
+		// fetch(`https://simple-json-db.herokuapp.com/posts/${prodId}`, {
+		// 	method: "PATCH",
+		// 	headers: { "Content-Type": "application/json" },
+		// 	body: JSON.stringify(patchPayload),
+		// })
+		// 	.then((res) => res.json())
+		// 	.catch((err) => console.log(err));
+		console.log(prodId);
 		let payload = {
 			img_url: `${url}`,
 			liked: false,
+			id: prodId,
 		};
 
 		fetch(`https://simple-json-db.herokuapp.com/saved_image`, {
@@ -81,6 +98,15 @@ const PostPage = () => {
 		// document.querySelector(".save").innerText = "Saved";
 	};
 
+	const handleKeyDown = (event) => {
+		if (event.key === 'Enter') 
+		  {
+		    dispatch(addTodo(chat),setChat(""))
+		  }
+	  }
+
+ 
+
 	return (
 		<div>
 			<div>
@@ -90,21 +116,17 @@ const PostPage = () => {
 				<div className="post_middle">
 					<div className="post_left">
 						<div>
-							{details.map((ele) => {
-								return (
-									<div className="container container2">
-										<img src={ele.url} alt="Snow" className="main_image" />
+							<div className="container container2">
+								<img src={details.url} alt="Snow" className="main_image" />
 
-										<div className="bottom_left">
-											<img src={right_up} alt="" />
-											<h3>View image</h3>
-										</div>
-										<div className="bottom_right_new">
-											<img src={scan} alt="" />
-										</div>
-									</div>
-								);
-							})}
+								<div className="bottom_left">
+									<img src={right_up} alt="" />
+									<h3>View image</h3>
+								</div>
+								<div className="bottom_right_new">
+									<img src={scan} alt="" />
+								</div>
+							</div>
 						</div>
 					</div>
 					<div className="post_right">
@@ -169,10 +191,28 @@ const PostPage = () => {
 								</div>
 
 								<div className="chat_input">
-									<input type="text" name="" id="" />
+									<input type="text" name="" id="" value={chat} 
+									onChange={(e)=>setChat(e.target.value)}
+									onKeyDown={handleKeyDown} />
 									<img src={icon_owner} alt="" />
+			
 								</div>
 							</div>
+
+							<div className="chat_main">
+								{
+									list_state.map((ele)=>{
+										return (
+											<div className="chatsub_div">
+												 <img src={icon_owner} alt="" className="chaticon" />
+										     	 <p>{ele.data}</p>
+												 <p>Sarvesh Mishra</p>
+											</div>
+											)
+									})
+								}
+								
+								</div>
 						</div>
 					</div>
 				</div>
