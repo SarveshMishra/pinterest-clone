@@ -19,11 +19,12 @@ import { useSelector } from "react-redux";
 import { Navbar } from "../components/Navbar/Navbar";
 import ImageCardDelete from "../components/ImageCard/ImageCardDelete";
 import "../css/user_profilepage.css";
-let userData = {
+
+const userData = {
 	id: 1,
-	name: "Leanne Graham",
-	username: "Bret",
-	email: "abc@xyz.com",
+	name: "Sarvesh Mishra",
+	username: "smishra",
+	email: "officialsmishra@gmail.com",
 	password: 123,
 	saved_image: [
 		{
@@ -45,10 +46,10 @@ let userData = {
 	],
 	public_profile: {
 		profile_img:
-			"https://dsm01pap006files.storage.live.com/y4mrTLhVwfdZUEeiloUPmJG8AQNo_AAW7GMHGMbUeKnc-fNAWzLMH8tVEP37EbuAN3KKxvJVmYn_z5u15X9bxdQCfpnhcWL0bA1LQhGx1RUDhq-QDRlegk6DpU6Dgd_ZAcmH1xtUwljSbfsNmIoDnmJy5BpVKTPxY5OtN4ql2I9TA8pSeK2WZTnuuFA6F9t9RTj?width=660&height=634&cropmode=none",
-		name: "Leanne Graham",
-		username: "Bret",
-		email: "abc@gmail.com",
+			"https://dsm01pap006files.storage.live.com/y4mQtWseafDY7LK1jUMAx_avTTyjhDJ6d9cSQ36-j5o36k7_SlNoM8FhIV3Ol-bfrb-LrkjMtOik5GwtIPzXSMmuE32pv-pKQiFSEPu-uTRxPozdqfkb1advMPaUHKrCOToh5-MjM9jXQW1q6haU4bBwU9XTm8lwHawshzGm4mNLkOWtYbkMF5fAtgGSOilqSss?width=256&height=256&cropmode=none",
+		name: "Sarvesh Mishra",
+		username: "smishra",
+		email: "officialsmishra@gmail.com",
 		age: 25,
 		about: "Hello World",
 		website: "https://www.google.com/",
@@ -59,8 +60,53 @@ let userData = {
 				username: "Bret",
 				email: "abc@gmail.com",
 			},
+			{
+				id: 1,
+				username: "Bret",
+				email: "abc@gmail.com",
+			},
+			{
+				id: 1,
+				username: "Bret",
+				email: "abc@gmail.com",
+			},
+			{
+				id: 1,
+				username: "Bret",
+				email: "abc@gmail.com",
+			},
 		],
 		followers: [
+			{
+				id: 1,
+				username: "Bret",
+				email: "",
+			},
+			{
+				id: 1,
+				username: "Bret",
+				email: "",
+			},
+			{
+				id: 1,
+				username: "Bret",
+				email: "",
+			},
+			{
+				id: 1,
+				username: "Bret",
+				email: "",
+			},
+			{
+				id: 1,
+				username: "Bret",
+				email: "",
+			},
+			{
+				id: 1,
+				username: "Bret",
+				email: "",
+			},
 			{
 				id: 1,
 				username: "Bret",
@@ -75,30 +121,32 @@ let userData = {
 	},
 };
 
-const Profile_img = userData.public_profile.profile_img;
-const His_Name = userData.public_profile.name;
-const User_name = userData.public_profile.username;
-const following = userData.public_profile.following.length;
+const profile_img = userData.public_profile.profile_img;
+const name = userData.public_profile.name;
+const username = userData.public_profile.username;
+const following = userData.public_profile.following;
 
 export const User_ProfilePage = () => {
-	
-	const userData = useSelector((state) => state.user.saved_image);
-
-	console.log(userData);
+	const userSavedImage = useSelector((state) => state.user.saved_image);
+	// const userData = useSelector((state) => state.user.user_data);
+	// const {
+	// 	public_profile: { profile_img, name, username, following },
+	// } = userData;
+	console.log(userSavedImage);
 	return (
 		<>
 			<Navbar />
 			<UserProfileWrapper>
 				<ProfileContainer>
 					<Img_div>
-						<Img src={Profile_img} alt="" />
+						<Img src={profile_img} alt="" />
 					</Img_div>
 
-					<Name>{His_Name}</Name>
+					<Name>{name}</Name>
 
-					<User_Name>@{User_name}</User_Name>
+					<User_Name>@{username}</User_Name>
 
-					<Following>{following} following</Following>
+					<Following>{following.length} following</Following>
 					<Button_wrapper>
 						<Saved_button>Share</Saved_button>
 						<Saved_button>Edit Profile</Saved_button>
@@ -137,7 +185,7 @@ export const User_ProfilePage = () => {
 
 				<div className="save_main">
 					<div className="save_div">
-						{userData.map((ele) => {
+						{userSavedImage.map((ele) => {
 							return (
 								//image.img_url
 								<ImageCardDelete image={ele.img_url} id={ele.id} />

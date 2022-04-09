@@ -7,7 +7,7 @@ import facebook_icon from "../../img/facebook_icon.png";
 import search_icon from "../../img/search_icon.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-const ImageCard = (probs) => {
+const ImageCard = (props) => {
 	const [share, setShare] = useState(false);
 	const [modal, setModal] = useState(false);
 
@@ -34,8 +34,8 @@ const ImageCard = (probs) => {
 	return (
 		<div>
 			<div className="container">
-				<img src={probs.image} alt="Snow" className="main_image" />
-				<Link to={`/pin/${probs.id}`}>
+				<img src={props.image} alt="Snow" className="main_image" />
+				<Link to={`/pin/${props.id}`}>
 					<div className="top_right">Save</div>
 				</Link>
 				<div className="bottom_right">

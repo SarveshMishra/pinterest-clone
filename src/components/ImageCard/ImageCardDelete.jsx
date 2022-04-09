@@ -13,8 +13,7 @@ import { useDispatch } from "react-redux";
 import { prevSavedImage } from "../../redux/user/action";
 import { saveAs } from 'file-saver'
 
- 
-const ImageCardDelete = (probs) => {
+const ImageCardDelete = (props) => {
 	const [share, setShare] = useState(false);
 	const [modal, setModal] = useState(false);
 
@@ -41,8 +40,8 @@ const ImageCardDelete = (probs) => {
 	}
 
 	function deletePost(id) {
-		
-		fetch("https://simple-json-db.herokuapp.com/saved_image" + "/" + id, {
+		console.log(id)
+		fetch(`https://simple-json-db.herokuapp.com/saved_image/${id}`, {
 			method: "DELETE",
 		})
 			.then(() => {
@@ -57,28 +56,26 @@ const ImageCardDelete = (probs) => {
 			.then((data) => {
 				dispatch(prevSavedImage(data));
 			});
-		let patchPayload = {
-			save_state: "Save",
-		};
+		
 		
 	}
 
 	const downloadImage = () => {
-		saveAs(probs.image, 'image.jpg') // Put your image url here.
+		saveAs(props.image, 'image.jpg') // Put your image url here.
 		//window.open('https://web.whatsapp.com://send?text=This is whatsapp sharing example using button')  
-	 //   window.open(`facebook://send?text=${probs.image}?v=ohpCMpderow`);  
+	 //   window.open(`facebook://send?text=${props.image}?v=ohpCMpderow`);  
 
 	}
 
 	const whatsappShare=()=>{
-	    window.open(`whatsapp://send?text=${probs.image}?v=ohpCMpderow`);  
+	    window.open(`whatsapp://send?text=${props.image}?v=ohpCMpderow`);  
  	}
 
 	const facebookShare=()=>{
-	    window.open(`https://www.facebook.com/?imageurl=${probs.image}`);
+	    window.open(`https://www.facebook.com/?imageurl=${props.image}`);
 	}
 	const twitterShare=()=>{
-	    window.open(`https://twitter.com/?imageurl=${probs.image}`);
+	    window.open(`https://twitter.com/?imageurl=${props.image}`);
 	}
 
 
@@ -88,12 +85,12 @@ const ImageCardDelete = (probs) => {
 	return (
 		<div>
 			<div className="container">
-				<img src={probs.image} alt="Snow" className="main_image" />
-				{/* <Link to={`/pin/${probs.id}`}> */}
-				<div className="top_right" onClick={() => deletePost(probs.id)}>
+				<img src={props.image} alt="Snow" className="main_image" />
+			
+				<div className="top_right" onClick={() => deletePost(props.id)}>
 					Delete
 				</div>
-				{/* </Link> */}
+				
 				<div className="bottom_right">
 					<img src={upload_icon} alt="" onClick={toggleShare} />
 					<img src={more_icon} alt="" onClick={toggleModal} />
@@ -151,7 +148,7 @@ const ImageCardDelete = (probs) => {
 							<div>
 								<h3>Hide Pin</h3>
 							</div>
-							{/* <a href={probs.image} download  > */}
+							{/* <a href={props.image} download  > */}
 							<div onClick={downloadImage}>
 								<h3>Download image</h3>
 							</div>
