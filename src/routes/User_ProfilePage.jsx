@@ -46,7 +46,7 @@ const userData = {
 	],
 	public_profile: {
 		profile_img:
-			"https://dsm01pap006files.storage.live.com/y4mQtWseafDY7LK1jUMAx_avTTyjhDJ6d9cSQ36-j5o36k7_SlNoM8FhIV3Ol-bfrb-LrkjMtOik5GwtIPzXSMmuE32pv-pKQiFSEPu-uTRxPozdqfkb1advMPaUHKrCOToh5-MjM9jXQW1q6haU4bBwU9XTm8lwHawshzGm4mNLkOWtYbkMF5fAtgGSOilqSss?width=256&height=256&cropmode=none",
+			"https://i.pinimg.com/236x/26/21/df/2621df15c7d12b5cac85517887e8eca9.jpg",
 		name: "Sarvesh Mishra",
 		username: "smishra",
 		email: "officialsmishra@gmail.com",

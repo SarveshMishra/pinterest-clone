@@ -714,6 +714,10 @@ export const Homepage = () => {
 	
 	return (
 		<div>
+			<div className="warn">
+				<p>It’s a project for educational purpose only and not commercial purpose
+               </p>
+			</div>
 			<nav>
 				<div className="logo">
 					<div className="img">

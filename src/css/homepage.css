@@ -1,4 +1,9 @@
 /* Local CSS for specific page */
+.warn{
+	background-color: #e60023;
+	text-align: center;
+	color: white;
+}
 body::-webkit-scrollbar {
 	display: none;
 }
