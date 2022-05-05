@@ -239,9 +239,7 @@ export const Navbar = () => {
 		fetch(`${constant.API_URL}/users/getUser?id=${userID}`)
 			.then((res) => res.json())
 			.then((data) => {
-				setImg_url(
-					`${constant.API_URL}/users/${data._id}/avatar/${data.avatar}`
-				);
+				setImg_url(`${data.avatar}`);
 				setUsername(data.name);
 				setEmail(data.email);
 				setName(data.name);

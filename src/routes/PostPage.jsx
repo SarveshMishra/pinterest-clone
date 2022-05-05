@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { addUserSavedImage,addTodo} from "../redux/user/action";
+import { addUserSavedImage, addTodo } from "../redux/user/action";
 import more_icon from "../img/more_icon.png";
 import upload_icon from "../img/upload_icon.png";
 import right_up from "../img/right-up.png";
@@ -13,24 +13,17 @@ import "../components/ImageCard/ImageCard.css";
 import "../css/PostPage.css";
 import { Navbar } from "../components/Navbar/Navbar";
 import { UserHomePage } from "../components/HomepageComponents/UserHomePage";
- import { useSelector,useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from "react-redux";
+import constant from "../constant";
 
 const PostPage = () => {
 	const { prodId } = useParams();
 	const [details, setDetails] = useState(null);
 	const dispatch = useDispatch();
 	const [save, setSave] = useState("Save");
-	
-	const [chat,setChat]=useState()
-	const list_state=useSelector((state)=>state.todoreducer.list)
 
-
-
-
- 
-
-	  
-
+	const [chat, setChat] = useState();
+	const list_state = useSelector((state) => state.todoreducer.list);
 
 	let owner = "mangesh pandit";
 	useEffect(() => {
@@ -67,25 +60,14 @@ const PostPage = () => {
 		let url = details.url;
 		setSave("Saved");
 
-		// let patchPayload = {
-		// 	save_state: "Saved",
-
-		// };
-		// fetch(`https://simple-json-db.herokuapp.com/posts/${prodId}`, {
-		// 	method: "PATCH",
-		// 	headers: { "Content-Type": "application/json" },
-		// 	body: JSON.stringify(patchPayload),
-		// })
-		// 	.then((res) => res.json())
-		// 	.catch((err) => console.log(err));
 		console.log(prodId);
+		let user_id = JSON.parse(localStorage.getItem("userID"));
 		let payload = {
-			img_url: `${url}`,
-			liked: false,
-			id: prodId,
+			image_url: `${url}`,
+			user_id: `${user_id}`,
+			image_id: `${prodId}`,
 		};
-
-		fetch(`https://simple-json-db.herokuapp.com/saved_image`, {
+		fetch(`${constant.API_URL}/save`, {
 			method: "POST",
 			headers: { "content-type": "application/json" },
 			body: JSON.stringify(payload),
@@ -93,19 +75,15 @@ const PostPage = () => {
 			.then((res) => res.json())
 			.then((res) => {
 				console.log(res);
-				dispatch(addUserSavedImage(res));
 			});
 		// document.querySelector(".save").innerText = "Saved";
 	};
 
 	const handleKeyDown = (event) => {
-		if (event.key === 'Enter') 
-		  {
-		    dispatch(addTodo(chat),setChat(""))
-		  }
-	  }
-
- 
+		if (event.key === "Enter") {
+			dispatch(addTodo(chat), setChat(""));
+		}
+	};
 
 	return (
 		<div>
@@ -191,28 +169,29 @@ const PostPage = () => {
 								</div>
 
 								<div className="chat_input">
-									<input type="text" name="" id="" value={chat} 
-									onChange={(e)=>setChat(e.target.value)}
-									onKeyDown={handleKeyDown} />
+									<input
+										type="text"
+										name=""
+										id=""
+										value={chat}
+										onChange={(e) => setChat(e.target.value)}
+										onKeyDown={handleKeyDown}
+									/>
 									<img src={icon_owner} alt="" />
-			
 								</div>
 							</div>
 
 							<div className="chat_main">
-								{
-									list_state.map((ele)=>{
-										return (
-											<div className="chatsub_div">
-												 <img src={icon_owner} alt="" className="chaticon" />
-										     	 <p>{ele.data}</p>
-												 <p>Sarvesh Mishra</p>
-											</div>
-											)
-									})
-								}
-								
-								</div>
+								{list_state.map((ele) => {
+									return (
+										<div className="chatsub_div">
+											<img src={icon_owner} alt="" className="chaticon" />
+											<p>{ele.data}</p>
+											<p>Sarvesh Mishra</p>
+										</div>
+									);
+								})}
+							</div>
 						</div>
 					</div>
 				</div>

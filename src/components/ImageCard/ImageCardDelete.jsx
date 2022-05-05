@@ -11,12 +11,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { prevSavedImage } from "../../redux/user/action";
-import { saveAs } from 'file-saver'
-
+import { saveAs } from "file-saver";
+import constant from "../../constant";
+import { useNavigate } from "react-router-dom";
 const ImageCardDelete = (props) => {
 	const [share, setShare] = useState(false);
 	const [modal, setModal] = useState(false);
-
+	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
 	const toggleShare = () => {
@@ -40,57 +41,44 @@ const ImageCardDelete = (props) => {
 	}
 
 	function deletePost(id) {
-		console.log(id)
-		fetch(`https://simple-json-db.herokuapp.com/saved_image/${id}`, {
+		console.log(id);
+		fetch(`${constant.API_URL}/save/?id=${id}`, {
 			method: "DELETE",
 		})
-			.then(() => {
-				console.log("removed");
+			.then((res) => {
+				res.json();
 			})
-			.catch((err) => {
-				console.error(err);
+			.then((res) => {
+				console.log(res);
+				alert("Image deleted successfully");
+				window.location.reload();
 			});
-
-		fetch(`https://simple-json-db.herokuapp.com/saved_image`)
-			.then((res) => res.json())
-			.then((data) => {
-				dispatch(prevSavedImage(data));
-			});
-		
-		
 	}
 
 	const downloadImage = () => {
-		saveAs(props.image, 'image.jpg') // Put your image url here.
-		//window.open('https://web.whatsapp.com://send?text=This is whatsapp sharing example using button')  
-	 //   window.open(`facebook://send?text=${props.image}?v=ohpCMpderow`);  
+		saveAs(props.image, "image.jpg");
+	};
 
-	}
+	const whatsappShare = () => {
+		window.open(`whatsapp://send?text=${props.image}?v=ohpCMpderow`);
+	};
 
-	const whatsappShare=()=>{
-	    window.open(`whatsapp://send?text=${props.image}?v=ohpCMpderow`);  
- 	}
-
-	const facebookShare=()=>{
-	    window.open(`https://www.facebook.com/?imageurl=${props.image}`);
-	}
-	const twitterShare=()=>{
-	    window.open(`https://twitter.com/?imageurl=${props.image}`);
-	}
-
-
-
-	 
+	const facebookShare = () => {
+		window.open(`https://www.facebook.com/?imageurl=${props.image}`);
+	};
+	const twitterShare = () => {
+		window.open(`https://twitter.com/?imageurl=${props.image}`);
+	};
 
 	return (
 		<div>
 			<div className="container">
 				<img src={props.image} alt="Snow" className="main_image" />
-			
+
 				<div className="top_right" onClick={() => deletePost(props.id)}>
 					Delete
 				</div>
-				
+
 				<div className="bottom_right">
 					<img src={upload_icon} alt="" onClick={toggleShare} />
 					<img src={more_icon} alt="" onClick={toggleModal} />
@@ -122,8 +110,6 @@ const ImageCardDelete = (props) => {
 								<img src={gmail} alt="" />
 								<p>Email</p>
 							</div>
-
-						 
 						</div>
 
 						<div className="search_div">
