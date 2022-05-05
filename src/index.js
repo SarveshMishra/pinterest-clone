@@ -11,6 +11,7 @@ import { Error } from "./routes/Error";
 import { store } from "./redux/store";
 import PostPage from "./routes/PostPage";
 import { User_ProfilePage } from "./routes/User_ProfilePage";
+import { Edit_Profile } from "./routes/Edit_Profile";
 ReactDOM.render(
 	<Provider store={store}>
 		<BrowserRouter>
@@ -22,6 +23,7 @@ ReactDOM.render(
 				<Route path="*" element={<Error />} />
 				<Route path="/pin/:prodId" element={<PostPage />} />
 				<Route path="/:username" element={<User_ProfilePage />} />
+				<Route path="/:username/profile/edit" element={<Edit_Profile />} />
 			</Routes>
 		</BrowserRouter>
 	</Provider>,

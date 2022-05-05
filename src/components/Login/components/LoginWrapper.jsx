@@ -53,21 +53,35 @@ export const Form = styled.form`
 
 export const Input = styled.input`
 	border-radius: ${(props) =>
-		props.button || props.facebook ? "30px" : "16px"};
+		props.button || props.facebook || props.google ? "30px" : "16px"};
 
 	border: ${(props) =>
-		props.button || props.facebook ? "0px none " : "2px solid #cdcdcd"};
+		props.button || props.facebook || props.google
+			? "0px none "
+			: "2px solid #cdcdcd"};
 
-	height: ${(props) => (props.button || props.facebook ? "40px" : "50px")};
+	height: ${(props) => (props.button || props.facebook || props.google ? "40px" : "50px")};
 	width: 60%;
 	padding: 10px;
 	box-sizing: border-box;
 	font-size: 16px;
 	margin-top: ${(props) => (props.button ? "10px" : "5px")};
 	background-color: ${(props) =>
-		props.button ? "#E60023" : props.facebook ? "#1877F2" : "#fff"};
+		props.button
+			? "#E60023"
+			: props.facebook
+			? "#1877F2"
+			: props.google
+			? "#cecece"
+			: "#fff"};
 	color: ${(props) =>
-		props.button ? "white" : props.facebook ? "#fff" : "#cecece"};
+		props.button
+			? "white"
+			: props.facebook
+			? "#fff"
+			: props.google
+			? "#000"
+			: "#cecece"};
 	cursor: ${(props) => (props.button ? "pointer" : "auto")};
 	font-weight: ${(props) =>
 		props.button || props.facebook ? "bold" : "normal"};
@@ -104,7 +118,7 @@ export const Business = styled.div`
 
 export const SignUpText = styled.div`
 	position: absolute;
-	
+
 	color: white;
 	align-self: center;
 	margin-left: 4%;
@@ -113,5 +127,4 @@ export const SignUpText = styled.div`
 	max-width: 40%;
 	font-size: 70px;
 	font-weight: 500;
-	
 `;

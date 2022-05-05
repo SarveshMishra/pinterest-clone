@@ -5,8 +5,9 @@ import { isLogIn } from "../redux/global_data/action";
 import { addUserData, prevSavedImage } from "../redux/user/action";
 import { Navbar } from "../components/Navbar/Navbar";
 import { UserHomePage } from "../components/HomepageComponents/UserHomePage";
+import { Disclaimer } from "../components/Disclaimer";
+import constant from "../constant";
 export const User_HomePage = () => {
-
 	const dispatch = useDispatch();
 	const userData = useDispatch();
 
@@ -14,17 +15,17 @@ export const User_HomePage = () => {
 		fetchUserProfile();
 	}, []);
 	const fetchUserProfile = () => {
-		fetch(
-			`https://simple-json-db.herokuapp.com/users?id=${localStorage.getItem(
-				"userID"
-			)}`
-		)
+		let userID = localStorage.getItem("userID")
+		userID = JSON.parse(userID)
+		
+		fetch(`${constant.API_URL}/users/getUser?id=${userID}`)
 			.then((res) => res.json())
 			.then((data) => {
+				console.log(data);
 				dispatch(isLogIn(true));
-				userData(addUserData(data[0]));
+				userData(addUserData(data));
 
-				localStorage.setItem("userData", JSON.stringify(data[0]));
+				localStorage.setItem("userData", JSON.stringify(data));
 			});
 		fetch(`https://simple-json-db.herokuapp.com/saved_image`)
 			.then((res) => res.json())
@@ -36,6 +37,7 @@ export const User_HomePage = () => {
 	return (
 		<div>
 			<div>
+				<Disclaimer />
 				<Navbar />
 			</div>
 			<UserHomePage />
