@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { Grid, Faded } from "../components/HomepageComponents/Grid";
 import { Login } from "../components/Login/Login";
 import down from "../img/down.svg";
+import { Disclaimer } from "../components/Disclaimer";
 
 const Button = styled.button`
 	background-color: ${(props) => (props.signup ? "#EFEFEF" : "#E60023")};
@@ -711,9 +712,10 @@ export const Homepage = () => {
 	let list5 = imageArray[4];
 	let list6 = imageArray[5];
 	let list7 = imageArray[6];
-	
+
 	return (
 		<div>
+			<Disclaimer />
 			<nav>
 				<div className="logo">
 					<div className="img">

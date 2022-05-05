@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { isLogIn } from "../../redux/global_data/action";
 import { logOutUser } from "../../redux/user/action";
 import "./navbar.css";
+import constant from "../../constant";
 
 const Navbar_wrapper = styled.div`
 	// background-color: #cecece;
@@ -232,17 +233,18 @@ export const Navbar = () => {
 		fetchUserProfile();
 	}, []);
 	const fetchUserProfile = () => {
-		fetch(
-			`https://simple-json-db.herokuapp.com/users?id=${localStorage.getItem(
-				"userID"
-			)}`
-		)
+		let userID = localStorage.getItem("userID");
+		userID = JSON.parse(userID);
+
+		fetch(`${constant.API_URL}/users/getUser?id=${userID}`)
 			.then((res) => res.json())
 			.then((data) => {
-				setImg_url(data[0].public_profile.profile_img);
-				setUsername(data[0].public_profile.username);
-				setEmail(data[0].public_profile.email);
-				setName(data[0].public_profile.name);
+				setImg_url(
+					`${constant.API_URL}/users/${data._id}/avatar/${data.avatar}`
+				);
+				setUsername(data.name);
+				setEmail(data.email);
+				setName(data.name);
 			});
 	};
 	const handleLogOut = () => {
