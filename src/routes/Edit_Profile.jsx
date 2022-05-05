@@ -5,8 +5,18 @@ import styled from "styled-components";
 import constant from "../constant";
 import { useDispatch } from "react-redux";
 import { addUserData } from "../redux/user/action";
-
-const Form = styled.form``;
+import { useNavigate } from "react-router-dom";
+const Form = styled.form`
+	margin: 1% 2%;
+	display: flex;
+	flex-direction: column;
+	width: 20%;
+	& input {
+		height: 40px;
+		border-radius: 5px;
+		margin-top: 10px;
+	}
+`;
 
 export const Edit_Profile = () => {
 	const [formData, setFormData] = React.useState({
@@ -15,10 +25,11 @@ export const Edit_Profile = () => {
 		password: "",
 		confirmPassword: "",
 	});
+	const navigate = useNavigate();
 	const userData = useDispatch();
 	const [selectedFile, setSelectedFile] = React.useState();
 
-	const [upload, setUpload] = React.useState("Upload");
+	const [upload, setUpload] = React.useState("Upload Image");
 	const handleChange = (e) => {
 		setFormData({
 			...formData,
@@ -43,6 +54,7 @@ export const Edit_Profile = () => {
 			.then((res) => res.json())
 			.then((data) => {
 				setUpload("Uploaded");
+				alert("Uploaded");
 			});
 	};
 
@@ -68,6 +80,8 @@ export const Edit_Profile = () => {
 				console.log(data);
 				userData(addUserData(data));
 				localStorage.setItem("userData", JSON.stringify(data));
+				alert("Profile Updated");
+				navigate("/");
 			});
 	};
 
@@ -75,9 +89,8 @@ export const Edit_Profile = () => {
 		<>
 			<Disclaimer />
 			<Navbar />
+			<h3>Edit Profile</h3>
 			<Form onSubmit={handleSubmit}>
-				<h3>Edit Profile</h3>
-
 				<label>Name:</label>
 				<input
 					type="text"

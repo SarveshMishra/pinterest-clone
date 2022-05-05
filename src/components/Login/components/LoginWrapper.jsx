@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import bg from "../../../img/sign-up-bg.png";
 export const LoginWrapper = styled.div`
 	width: 484px;
 	background-color: rgb(255, 255, 255);
@@ -25,6 +25,7 @@ export const Overlay = styled.div`
 	top: 100%;
 	display: flex;
 	flex-direction: row-reverse;
+	background-image: url(${bg});
 `;
 
 export const HeadText = styled.h1`
@@ -60,7 +61,8 @@ export const Input = styled.input`
 			? "0px none "
 			: "2px solid #cdcdcd"};
 
-	height: ${(props) => (props.button || props.facebook || props.google ? "40px" : "50px")};
+	height: ${(props) =>
+		props.button || props.facebook || props.google ? "40px" : "50px"};
 	width: 60%;
 	padding: 10px;
 	box-sizing: border-box;

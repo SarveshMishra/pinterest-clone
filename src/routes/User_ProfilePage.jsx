@@ -1,5 +1,5 @@
 // User profile page
-import React from "react";
+import React, { useEffect } from "react";
 import {
 	UserProfileWrapper,
 	ProfileContainer,
@@ -24,12 +24,22 @@ import { useNavigate } from "react-router-dom";
 import constant from "../constant";
 export const User_ProfilePage = () => {
 	let userData = JSON.parse(localStorage.getItem("userData"));
-	const avatar = `${constant.API_URL}/users/${userData._id}/avatar/${userData.avatar}`;
-
+	const avatar = `${userData.avatar}`;
+	const [userSavedImage, setUserSavedImage] = React.useState([]);
+	const userID = JSON.parse(localStorage.getItem("userID"));
 	const name = userData.name;
 	const email = userData.email || "";
 	const following = userData.following || [];
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		fetch(`${constant.API_URL}/save/?id=${userID}`)
+			.then((res) => res.json())
+			.then((res) => {
+				console.log(res);
+				setUserSavedImage(res);
+			});
+	}, []);
 	return (
 		<>
 			<Disclaimer />
@@ -90,12 +100,12 @@ export const User_ProfilePage = () => {
 
 				<div className="save_main">
 					<div className="save_div">
-						{/* {userSavedImage.map((ele) => {
+						{userSavedImage.map((ele) => {
 							return (
 								//image.img_url
-								<ImageCardDelete image={ele.img_url} id={ele.id} />
+								<ImageCardDelete image={ele.image_url} id={ele.image_id} />
 							);
-						})} */}
+						})}
 					</div>
 				</div>
 			</UserProfileWrapper>

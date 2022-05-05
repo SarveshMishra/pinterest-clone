@@ -73,55 +73,7 @@ nav {
 	z-index: 3;
 	position: relative;
 }
-/* .creativity {
-	font-size: 60px;
-	margin: 0px;
-	font-weight: 600;
-	position: absolute;
-	text-align: center;
-	width: 100%;
-	left: 0px;
-	color: rgb(81, 140, 123);
-	/* transform: translateY(-40px); */
-/* transition: all 0.5s ease-in-out;
-	opacity: 1;
-	z-index: 2;
-} */
 
-/* Slideshow container */
-/* .slideshow-container {
-	max-width: 1000px;
-	position: relative;
-	margin: 200px auto;
-} */
-
-/* Caption text */
-/* .text {
-	color: red;
-	font-size: 50px;
-	padding: 8px 12px;
-	position: absolute;
-	bottom: 8px;
-	width: 100%;
-	text-align: center;
-} */
-
-/* The dots/bullets/indicators */
-/* .dot {
-	height: 15px;
-	width: 15px;
-	margin: 0 2px;
-	background-color: #bbb;
-	border-radius: 50%;
-	display: inline-block;
-	transition: background-color 0.6s ease;
-} */
-/* 
-.active {
-	background-color: #717171;
-} */
-
-/* Fading animation */
 .fade {
 	animation-name: fadeUP, move;
 	animation-duration: 1.5s;
@@ -207,7 +159,7 @@ nav {
 	margin: 0 auto;
 	top: 10%;
 	width: 100%;
-	height: 190vh;
+	height: 90vh;
 	z-index: -1;
 }
 #homepage-grid div{
