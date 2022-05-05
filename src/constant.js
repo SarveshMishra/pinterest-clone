@@ -1,4 +1,4 @@
 const constant = {
-	API_URL: "http://localhost:3000",
+	API_URL: "https://pinterest-clone-backend-api.herokuapp.com",
 };
 export default constant;
