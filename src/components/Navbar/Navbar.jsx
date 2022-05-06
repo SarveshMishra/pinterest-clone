@@ -233,12 +233,14 @@ export const Navbar = () => {
 		fetchUserProfile();
 	}, []);
 	const fetchUserProfile = () => {
-		let userID = localStorage.getItem("userID");
-		userID = JSON.parse(userID);
-
-		fetch(`${constant.API_URL}/users/getUser?id=${userID}`)
+		fetch(`${constant.API_URL}/users/getUser`, {
+			headers: {
+				token: JSON.parse(localStorage.getItem("token")),
+			},
+		})
 			.then((res) => res.json())
 			.then((data) => {
+				data = data.user;
 				setImg_url(`${data.avatar}`);
 				setUsername(data.name);
 				setEmail(data.email);

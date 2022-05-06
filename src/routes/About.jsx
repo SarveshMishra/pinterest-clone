@@ -1,10 +1,10 @@
 import React from "react";
-import { Auth_Popup } from "../components/Login/Auth_Popup";
+import ReactDOM from "react-dom";
 
 export const About = () => {
 	return (
-		<div>
-			<Auth_Popup />
-		</div>
+		<>
+			<h1>Hello</h1>
+		</>
 	);
 };

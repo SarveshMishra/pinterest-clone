@@ -47,7 +47,7 @@ export const Homepage = () => {
 			clearTimeout(timeoutRef.current);
 		}
 
-		console.log(window.scrollY)
+		// console.log(window.scrollY)
 	}
 
 	React.useEffect(() => {

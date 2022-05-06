@@ -24,6 +24,7 @@ import { useNavigate } from "react-router-dom";
 import constant from "../constant";
 export const User_ProfilePage = () => {
 	let userData = JSON.parse(localStorage.getItem("userData"));
+	userData = userData
 	const avatar = `${userData.avatar}`;
 	const [userSavedImage, setUserSavedImage] = React.useState([]);
 	const userID = JSON.parse(localStorage.getItem("userID"));

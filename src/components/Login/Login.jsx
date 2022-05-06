@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import GoogleLogin from "react-google-login";
 
+import "./components/Login.css";
 import {
 	Form,
 	HeadText,
@@ -13,13 +15,15 @@ import {
 	SignUpText,
 } from "./components/LoginWrapper";
 import constant from "../../constant";
+import FacebookLogin from "react-facebook-login";
+
 export const Login = () => {
 	const [formData, setFormData] = React.useState({
 		email: "",
 		password: "",
 		age: "",
 	});
-	const [toggleForm, setToggleForm] = React.useState(false);
+	const [toggleForm, setToggleForm] = React.useState(true);
 	const navigate = useNavigate();
 	const handleChange = (e) => {
 		setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -40,15 +44,19 @@ export const Login = () => {
 			body: JSON.stringify(payload),
 		})
 			.then((res) => {
-				if (res.status === 200) {
-					return res.json();
+				return res.json();
+			})
+			.then((data) => {
+				if (data.success) {
+					return data;
 				} else {
-					throw new Error("Something went wrong");
+					alert(data.message);
 				}
 			})
 			.then((data) => {
 				localStorage.setItem("isLogIn", "true");
-				localStorage.setItem("userID", JSON.stringify(data._id));
+				localStorage.setItem("token", JSON.stringify(data.token.token));
+				localStorage.setItem("userID", JSON.stringify(data.token.userId));
 				navigate("/");
 				window.location.reload();
 			});
@@ -67,22 +75,149 @@ export const Login = () => {
 			body: JSON.stringify(payload),
 		})
 			.then((res) => {
-				if (res.status === 200) {
-					return res.json();
+				return res.json();
+			})
+			.then((data) => {
+				if (data.success) {
+					return data;
 				} else {
-					throw new Error("Something went wrong");
+					alert(data.message);
 				}
 			})
 			.then((data) => {
 				localStorage.setItem("isLogIn", "true");
-				localStorage.setItem("userID", JSON.stringify(data._id));
+				localStorage.setItem("token", JSON.stringify(data.token.token));
+				localStorage.setItem("userID", JSON.stringify(data.token.userId));
 				navigate("/");
 				window.location.reload();
 			});
 	};
-	const facebookLogin = async () => {
-		navigate(`${constant.API_URL}/auth/facebook`);
+
+	const responseFacebook = (response) => {
+		const payload = {
+			email: response.email,
+			name: response.name,
+			facebookId: response.id,
+			avatar: response.picture.data.url,
+			password: "facebookDefaultPassword1234567",
+		};
+		fetch(`${constant.API_URL}/users`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(payload),
+		})
+			.then((res) => {
+				return res.json();
+			})
+			.then((data) => {
+				if (data.success) {
+					return data;
+				} else {
+					const payload = {
+						email: response.email,
+						password: "facebookDefaultPassword1234567",
+					};
+					fetch(`${constant.API_URL}/users/login`, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify(payload),
+					})
+						.then((res) => {
+							return res.json();
+						})
+						.then((data) => {
+							if (data.success) {
+								return data;
+							} else {
+								alert(data.message);
+							}
+						})
+						.then((data) => {
+							localStorage.setItem("isLogIn", "true");
+							localStorage.setItem("token", JSON.stringify(data.token.token));
+							localStorage.setItem("userID", JSON.stringify(data.token.userId));
+							navigate("/");
+							window.location.reload();
+						});
+				}
+			})
+			.then((data) => {
+				localStorage.setItem("isLogIn", "true");
+				localStorage.setItem("token", JSON.stringify(data.token.token));
+				localStorage.setItem("userID", JSON.stringify(data.token.userId));
+				navigate("/");
+				window.location.reload();
+			});
 	};
+	const handleGoogleLogin = (response) => {
+		const payload = {
+			email: response.profileObj.email,
+			name: response.profileObj.name,
+			googleId: response.profileObj.googleId,
+			avatar: response.profileObj.imageUrl,
+			password: "googleDefaultPassword1234567",
+		};
+		console.log(payload.email);
+		fetch(`${constant.API_URL}/users`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(payload),
+		})
+			.then((res) => {
+				return res.json();
+			})
+			.then((data) => {
+				if (data.success) {
+					return data;
+				} else {
+					const payload = {
+						email: response.profileObj.email,
+						password: "googleDefaultPassword1234567",
+					};
+					fetch(`${constant.API_URL}/users/login`, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify(payload),
+					})
+						.then((res) => {
+							return res.json();
+						})
+						.then((data) => {
+							if (data.success) {
+								return data;
+							} else {
+								alert(data.message);
+							}
+						})
+						.then((data) => {
+							localStorage.setItem("isLogIn", "true");
+							localStorage.setItem("token", JSON.stringify(data.token.token));
+							localStorage.setItem("userID", JSON.stringify(data.token.userId));
+							navigate("/");
+							window.location.reload();
+						});
+				}
+			})
+			.then((data) => {
+				localStorage.setItem("isLogIn", "true");
+				localStorage.setItem("token", JSON.stringify(data.token.token));
+				localStorage.setItem("userID", JSON.stringify(data.token.userId));
+				navigate("/");
+				window.location.reload();
+			});
+	};
+	const facebookLogin = (data) => {
+		console.log(data);
+	};
+
 	return (
 		<>
 			<Overlay>
@@ -132,20 +267,32 @@ export const Login = () => {
 								></Input>
 							</Form>
 							<Text style={{ margin: `20px 0` }}>OR</Text>
-							<Input
+
+							<FacebookLogin
+								appId={process.env.REACT_APP_FACEBOOK_APP_ID}
+								autoLoad={false}
+								fields="name,email,picture"
 								onClick={facebookLogin}
-								facebook
-								type="button"
-								style={{ cursor: `pointer` }}
-								value="Continue with Facebook"
-							></Input>
-							<Input
-								onClick={facebookLogin}
-								google
-								type="button"
-								style={{ cursor: `pointer` }}
-								value="Continue with Google"
-							></Input>
+								cssClass="facebook-button"
+								callback={responseFacebook}
+							/>
+							<br />
+							<br />
+							<GoogleLogin
+								clientId={process.env.REACT_APP_GOOGLE_APP_ID}
+								render={(renderProps) => (
+									<button
+										className="google-button"
+										onClick={renderProps.onClick}
+										disabled={renderProps.disabled}
+									>
+										Login with Google
+									</button>
+								)}
+								onSuccess={handleGoogleLogin}
+								onFailure={handleGoogleLogin}
+								cookiePolicy={"single_host_origin"}
+							/>
 							<Text bottomNormal style={{ margin: `10px 0` }}>
 								By continuing, you agree to Pinterest's
 							</Text>
@@ -215,20 +362,31 @@ export const Login = () => {
 								></Input>
 							</Form>
 							<Text style={{ margin: `20px 0` }}>OR</Text>
-							<Input
+							<FacebookLogin
+								appId={process.env.REACT_APP_FACEBOOK_APP_ID}
+								autoLoad={false}
+								fields="name,email,picture"
 								onClick={facebookLogin}
-								facebook
-								type="button"
-								style={{ cursor: `pointer` }}
-								value="Continue with Facebook"
-							></Input>
-							<Input
-								onClick={facebookLogin}
-								google
-								type="button"
-								style={{ cursor: `pointer` }}
-								value="Continue with Google"
-							></Input>
+								cssClass="facebook-button"
+								callback={responseFacebook}
+							/>
+							<br />
+							<br />
+							<GoogleLogin
+								clientId={process.env.REACT_APP_GOOGLE_APP_ID}
+								render={(renderProps) => (
+									<button
+										className="google-button"
+										onClick={renderProps.onClick}
+										disabled={renderProps.disabled}
+									>
+										Login with Google
+									</button>
+								)}
+								onSuccess={handleGoogleLogin}
+								onFailure={handleGoogleLogin}
+								cookiePolicy={"single_host_origin"}
+							/>
 							<Text bottomNormal style={{ margin: `10px 0` }}>
 								By continuing, you agree to Pinterest's
 							</Text>

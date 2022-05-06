@@ -15,22 +15,17 @@ export const User_HomePage = () => {
 		fetchUserProfile();
 	}, []);
 	const fetchUserProfile = () => {
-		let userID = localStorage.getItem("userID")
-		userID = JSON.parse(userID)
-		
-		fetch(`${constant.API_URL}/users/getUser?id=${userID}`)
+		fetch(`${constant.API_URL}/users/getUser`, {
+			headers: {
+				token: JSON.parse(localStorage.getItem("token")),
+			},
+		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
+				
 				dispatch(isLogIn(true));
-				userData(addUserData(data));
-
-				localStorage.setItem("userData", JSON.stringify(data));
-			});
-		fetch(`https://simple-json-db.herokuapp.com/saved_image`)
-			.then((res) => res.json())
-			.then((data) => {
-				dispatch(prevSavedImage(data));
+				userData(addUserData(data.user));
+				localStorage.setItem("userData", JSON.stringify(data.user));
 			});
 	};
 

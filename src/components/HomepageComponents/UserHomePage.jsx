@@ -22,7 +22,7 @@ export const UserHomePage = () => {
 				return res.json();
 			})
 			.then((data) => {
-				console.log(data);
+				// console.log(data);
 
 				setList1(data.slice(0, 8));
 				setList2(data.slice(7, 15));
@@ -31,10 +31,10 @@ export const UserHomePage = () => {
 			});
 	}, []);
 
-	console.log(list1);
-	console.log(list2);
-	console.log(list3);
-	console.log(list4);
+	// console.log(list1);
+	// console.log(list2);
+	// console.log(list3);
+	// console.log(list4);
 
 	return (
 		<div className="home_page_container">
