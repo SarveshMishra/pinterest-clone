@@ -246,12 +246,14 @@ export const Login = () => {
 									placeholder="Email"
 									id="email"
 									value={email}
+									type="email"
 								></Input>
 								<Input
 									onChange={handleChange}
 									placeholder="Enter password"
 									id="password"
 									value={password}
+									type="password"
 								></Input>
 								<Input
 									onChange={handleChange}
@@ -346,12 +348,14 @@ export const Login = () => {
 									placeholder="Email"
 									id="email"
 									value={email}
+									type="email"
 								></Input>
 								<Input
 									onChange={handleChange}
 									placeholder="Enter password"
 									id="password"
 									value={password}
+									type="password"
 								></Input>
 
 								<Input
