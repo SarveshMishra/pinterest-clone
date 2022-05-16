@@ -99,7 +99,7 @@ export const Login = () => {
 			name: response.name,
 			facebookId: response.id,
 			avatar: response.picture.data.url,
-			password: "facebookDefaultPassword1234567",
+			password: process.env.REACT_APP_DEFAULT_PASSWORD,
 		};
 		fetch(`${constant.API_URL}/users`, {
 			method: "POST",
@@ -117,7 +117,7 @@ export const Login = () => {
 				} else {
 					const payload = {
 						email: response.email,
-						password: "facebookDefaultPassword1234567",
+						password: process.env.REACT_APP_DEFAULT_PASSWORD,
 					};
 					fetch(`${constant.API_URL}/users/login`, {
 						method: "POST",
@@ -159,7 +159,7 @@ export const Login = () => {
 			name: response.profileObj.name,
 			googleId: response.profileObj.googleId,
 			avatar: response.profileObj.imageUrl,
-			password: "googleDefaultPassword1234567",
+			password: process.env.REACT_APP_DEFAULT_PASSWORD,
 		};
 		console.log(payload.email);
 		fetch(`${constant.API_URL}/users`, {
@@ -178,7 +178,7 @@ export const Login = () => {
 				} else {
 					const payload = {
 						email: response.profileObj.email,
-						password: "googleDefaultPassword1234567",
+						password: process.env.REACT_APP_DEFAULT_PASSWORD,
 					};
 					fetch(`${constant.API_URL}/users/login`, {
 						method: "POST",
