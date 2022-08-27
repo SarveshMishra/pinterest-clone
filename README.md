@@ -1,5 +1,7 @@
 # Disclaimer
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a3b7bc8f2152404d920958c1b22c9a4e)](https://app.codacy.com/gh/SarveshMishra/pinterest-clone?utm_source=github.com&utm_medium=referral&utm_content=SarveshMishra/pinterest-clone&utm_campaign=Badge_Grade_Settings)
+
 “It’s a project for educational purpose only and not commercial purpose”
 
 # Pinterest-clone
