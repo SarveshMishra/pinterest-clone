@@ -33,7 +33,7 @@ const PostPage = () => {
 	const [chat, setChat] = useState();
 	const list_state = useSelector((state) => state.todoreducer.list);
 	const fetchUserProfile = () => {
-		fetch(`${constant.API_URL}/users/getUser`, {
+		fetch(`${process.env.REACT_APP_BACKEND_SERVER}/users/getUser`, {
 			headers: {
 				token: JSON.parse(localStorage.getItem('token')),
 			},
@@ -100,7 +100,7 @@ const PostPage = () => {
 			user_id: `${user_id}`,
 			image_id: `${prodId}`,
 		};
-		fetch(`${constant.API_URL}/save`, {
+		fetch(`${process.env.REACT_APP_BACKEND_SERVER}/save`, {
 			method: 'POST',
 			headers: { 'content-type': 'application/json' },
 			body: JSON.stringify(payload),

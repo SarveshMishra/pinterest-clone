@@ -238,7 +238,7 @@ export const Navbar = () => {
 		fetchUserProfile();
 	}, []);
 	const fetchUserProfile = () => {
-		fetch(`${constant.API_URL}/users/getUser`, {
+		fetch(`${process.env.REACT_APP_BACKEND_SERVER}/users/getUser`, {
 			headers: {
 				token: JSON.parse(localStorage.getItem('token')),
 			},
@@ -253,7 +253,7 @@ export const Navbar = () => {
 			});
 	};
 	const handleLogOut = () => {
-		fetch(`${constant.API_URL}/users/signout`, {
+		fetch(`${process.env.REACT_APP_BACKEND_SERVER}/users/signout`, {
 			method: 'DELETE',
 			headers: {
 				token: JSON.parse(localStorage.getItem('token')),
