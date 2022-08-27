@@ -2,7 +2,6 @@ import React from 'react';
 import { Navbar } from '../components/Navbar/Navbar';
 import { Disclaimer } from '../components/Disclaimer';
 import styled from 'styled-components';
-import constant from '../constant';
 import { useDispatch } from 'react-redux';
 import { addUserData } from '../redux/user/action';
 import { useNavigate } from 'react-router-dom';
@@ -17,7 +16,6 @@ const Form = styled.form`
 		margin-top: 10px;
 	}
 `;
-
 export const Edit_Profile = () => {
 	const [formData, setFormData] = React.useState({
 		name: '',
@@ -28,7 +26,6 @@ export const Edit_Profile = () => {
 	const navigate = useNavigate();
 	const userData = useDispatch();
 	const [selectedFile, setSelectedFile] = React.useState();
-
 	const [upload, setUpload] = React.useState('Upload Image');
 	const handleChange = (e) => {
 		setFormData({
@@ -39,14 +36,12 @@ export const Edit_Profile = () => {
 	const uploadChange = (e) => {
 		setSelectedFile(e.target.files[0]);
 	};
-
 	const handleUpload = (e) => {
 		e.preventDefault();
 		const formData = new FormData();
 		formData.append('image', selectedFile);
 		formData.append('upload_preset', 'react-file-upload');
 		let userID = JSON.parse(localStorage.getItem('userID'));
-
 		fetch(`${process.env.REACT_APP_BACKEND_SERVER}/users/${userID}/avatar`, {
 			method: 'POST',
 			body: formData,
@@ -57,7 +52,6 @@ export const Edit_Profile = () => {
 				alert('Uploaded');
 			});
 	};
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log(formData);
@@ -75,7 +69,6 @@ export const Edit_Profile = () => {
 			body: JSON.stringify(payload),
 		})
 			.then((res) => res.json())
-
 			.then((data) => {
 				console.log(data);
 				userData(addUserData(data));
@@ -84,7 +77,6 @@ export const Edit_Profile = () => {
 				navigate('/');
 			});
 	};
-
 	return (
 		<>
 			<Disclaimer />
