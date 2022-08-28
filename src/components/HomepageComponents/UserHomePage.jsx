@@ -1,16 +1,14 @@
+/* eslint-disable react/jsx-key */
 import React from 'react';
 import '../../css/user_homepage.css';
 import ImageCard from '../ImageCard/ImageCard';
 const randomWords = require('random-words');
-
 export const UserHomePage = () => {
-	const [list, setList] = React.useState([]);
 	const [list1, setList1] = React.useState([]);
 	const [list2, setList2] = React.useState([]);
 	const [list3, setList3] = React.useState([]);
 	const [list4, setList4] = React.useState([]);
 	const word = randomWords();
-
 	React.useEffect(() => {
 		fetch(
 			`https://api.unsplash.com/photos/random/?client_id=${process.env.REACT_APP_UNSPLASH_API_KEY}&count=30&topics=${word}`
@@ -31,7 +29,6 @@ export const UserHomePage = () => {
 				}
 			});
 	}, []);
-
 	return (
 		<div className='home_page_container'>
 			<div>

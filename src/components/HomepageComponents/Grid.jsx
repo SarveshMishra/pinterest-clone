@@ -1,6 +1,4 @@
-import { calculateNewValue } from "@testing-library/user-event/dist/utils";
-import styled from "styled-components";
-
+import styled from 'styled-components';
 export const Grid = styled.div`
 	height: 100%;
 	width: 20%;
@@ -8,26 +6,22 @@ export const Grid = styled.div`
 	z-index: 1;
 	padding-top: ${(props) =>
 		props.one
-			? "5%"
+			? '5%'
 			: props.two
-			? "15%"
+			? '15%'
 			: props.three
-			? "25%"
+			? '25%'
 			: props.four
-			? "30%"
+			? '30%'
 			: props.five
-			? "25%"
+			? '25%'
 			: props.six
-			? "15%"
-			: "5%"}};
-	
+			? '15%'
+			: '5%'}};
 		border-radius: 20px;
-		
 		div{
-			
 			width: 100%;
 			margin-bottom: 5%;
-
 			img{
 				height: 100%;
 				width: 100%;
@@ -36,22 +30,20 @@ export const Grid = styled.div`
 		}
 		margin-left: ${(props) =>
 			props.one
-				? "-130px"
+				? '-130px'
 				: props.two
-				? "10px"
+				? '10px'
 				: props.three
-				? "10px"
+				? '10px'
 				: props.four
-				? "10px"
+				? '10px'
 				: props.five
-				? "10px"
+				? '10px'
 				: props.six
-				? "10px"
-				: "10px"};
-				
-	 margin-right:${(props) => (props.seven ? "-130px" : "5px")};
+				? '10px'
+				: '10px'};
+	 margin-right:${(props) => (props.seven ? '-130px' : '5px')};
 `;
-
 export const Faded = styled.div`
 	width: 100%;
 	height: 150px;

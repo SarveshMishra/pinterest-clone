@@ -1,7 +1,4 @@
-import React from 'react'
-
+import React from 'react';
 export const ListItem = () => {
-  return (
-    <div>ListItem</div>
-  )
-}
+	return <div>ListItem</div>;
+};

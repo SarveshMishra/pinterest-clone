@@ -1,17 +1,14 @@
-import styled from "styled-components";
-
+import styled from 'styled-components';
 export const UserProfileWrapper = styled.div`
 	margin: 0px;
 	margin-top: 2%;
-	font-family: "Segoe UI", Arial, sans-serif;
+	font-family: 'Segoe UI', Arial, sans-serif;
 `;
-
 export const ProfileContainer = styled.div`
 	//   background-color: red;
 	// padding: 0px 20%;
 	margin: 0px 32%;
 `;
-
 export const Img_div = styled.div`
 	// background-color : yellow;
 	height: 24%;
@@ -21,7 +18,6 @@ export const Img_div = styled.div`
 	margin: 0px auto;
 	border-radius: 50px;
 `;
-
 export const Name = styled.h1`
 	text-align: center;
 	font-weight: 750;
@@ -32,7 +28,6 @@ export const Img = styled.img`
 	width: 100%;
 	border-radius: 500px;
 `;
-
 export const User_Name = styled.div`
 	font-size: 100%;
 	color: #8c76a2;
@@ -40,23 +35,17 @@ export const User_Name = styled.div`
 	margin: auto;
 	margin-top: 2%;
 `;
-
 export const Following = styled.div`
 	text-align: center;
 	margin-top: 2%;
 	color: #78727d;
 `;
-
 export const Button_wrapper = styled.div`
-
 	display: flex;
 	margin-top: 3%;
 	justify-content: center;
 `;
-
-
 export const Saved_button = styled.button`
-
 	height: 2.5rem;
 	padding: 10px;
 	margin-left: 3%;
@@ -68,7 +57,6 @@ export const Saved_button = styled.button`
 	border-radius: 10px;
 	align-items: center;
 `;
-
 export const Image_card = styled.div`
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -86,18 +74,15 @@ export const Middle_div = styled.div`
 	height: 120%;
 	padding-left: 2%;
 `;
-
 export const Svg = styled.svg`
 	margin: 10px;
 	margin-left: 93%;
 `;
-
 export const SavedImg = styled.div`
 	width: 80%;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	padding: 10px;
-
 	div {
 		height: 80%;
 		width: 80%;

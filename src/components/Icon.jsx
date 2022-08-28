@@ -1,7 +1,4 @@
-import React from 'react'
-
+import React from 'react';
 export const Icon = () => {
-  return (
-    <div>Icon</div>
-  )
-}
+	return <div>Icon</div>;
+};

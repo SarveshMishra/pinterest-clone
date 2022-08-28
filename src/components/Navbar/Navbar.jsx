@@ -1,13 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { isLogIn } from '../../redux/global_data/action';
 import { logOutUser } from '../../redux/user/action';
 import './navbar.css';
 import constant from '../../constant';
-
 const Navbar_wrapper = styled.div`
 	// background-color: #cecece;
 	position: sticky;
@@ -21,7 +19,6 @@ const Navbar_wrapper = styled.div`
 	font-family: 'Segoe UI', Arial, sans-serif;
 	z-index: 1;
 `;
-
 const Logo_wrapper = styled.div`
 	margin-right: 10px;
 	border-radius: 50px;
@@ -30,20 +27,17 @@ const Logo_wrapper = styled.div`
 	margin: auto 1%;
 	cursor: pointer;
 `;
-
 const Home_div = styled.button`
 	width: auto;
 	margin: auto 1%;
 	font-weight: bold;
 	font-size: 1rem;
-
 	border: none;
 	cursor: pointer;
 	padding: 1% 1.2%;
 	border-radius: 50px;
 	margin: auto 0 auto auto;
 `;
-
 const Search_div = styled.div`
 	width: 80%;
 	color: rgb(118, 118, 118);
@@ -52,10 +46,8 @@ const Search_div = styled.div`
 	margin-left: 5px;
 	height: 100%;
 	background-color: #efefef;
-
 	&:hover {
 		background-color: #e1e1e1;
-
 		 {
 			Input {
 				background-color: #e1e1e1;
@@ -78,7 +70,6 @@ const Notification = styled.div`
 const Message = styled.div`
 	margin: auto 0px;
 `;
-
 const Drop_Down = styled.div`
 	margin: auto 0px;
 	// padding-left: 4%
@@ -103,7 +94,6 @@ const Input = styled.input`
 		background-color: #e1e1e1;
 	}
 `;
-
 const Svg = styled.svg`
 	margin: 0px;
 	margin: auto 10px;
@@ -116,7 +106,6 @@ const Navbar_profile = styled.div`
 	}
 	cursor: pointer;
 `;
-
 const DropDownMenu = styled.div`
 	width: 300px;
 	border: 1px solid #e1e1e1;
@@ -127,16 +116,13 @@ const DropDownMenu = styled.div`
 	right: 0.5%;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	padding: 1%;
-
 	font-size: 1.1rem;
 	box-sizing: border-box;
-
 	p {
 		font-size: 0.8rem;
 	}
 	ul {
 		list-style-type: none;
-
 		li {
 			width: 100%;
 			height: 40px;
@@ -164,7 +150,6 @@ const CurrentProfile = styled.div`
 		border-radius: 10px;
 	}
 `;
-
 const SearchResultsDiv = styled.div`
 	background-color: white;
 	margin: 0px 14% 0px 17%;
@@ -182,7 +167,6 @@ const HeadingDiv = styled.div`
 	margin-top: 50px;
 	margin-bottom: -20px;
 `;
-
 const ImageCard = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -196,7 +180,6 @@ const ImageDiv = styled.div`
 	font-weight: 700;
 	position: relative;
 	margin-left: 2rem;
-
 	img {
 		border-radius: 18px;
 		display: block;
@@ -214,7 +197,6 @@ const ImageDiv = styled.div`
 		opacity: 100;
 	}
 `;
-
 export const Navbar = () => {
 	const logOut = useDispatch();
 	const userLogOut = useDispatch();
@@ -227,7 +209,6 @@ export const Navbar = () => {
 	const [toggleDropDown, setToggleDropDown] = React.useState(false);
 	const navigate = useNavigate();
 	const [SearchBarActive, setSearchBarActive] = React.useState(false);
-
 	// console.log(SearchBarActive);
 	const logOutUser = () => {
 		navigate('/');
@@ -272,12 +253,10 @@ export const Navbar = () => {
 	const handleNavigation = () => {
 		navigate(`/${username}`);
 	};
-
 	const activeBtn = () => {
 		let flag = window.location.href == 'http://localhost:3000/' ? true : false;
 		setActive(flag);
 	};
-
 	return (
 		<>
 			<Navbar_wrapper>
@@ -330,7 +309,6 @@ export const Navbar = () => {
 						placeholder='Search'
 					/>
 				</Search_div>
-
 				<Notification>
 					<Svg
 						height='24'
@@ -344,7 +322,6 @@ export const Navbar = () => {
 						<path d='M12 24c-1.66 0-3-1.34-3-3h6c0 1.66-1.34 3-3 3zm7-10.83c1.58 1.52 2.67 3.55 3 5.83H2c.33-2.28 1.42-4.31 3-5.83V7c0-3.87 3.13-7 7-7s7 3.13 7 7v6.17z'></path>
 					</Svg>
 				</Notification>
-
 				<Message>
 					<Svg
 						height='24'
@@ -358,7 +335,6 @@ export const Navbar = () => {
 						<path d='M18 12.5a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 18 12.5m-6 0a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 12 12.5m-6 0a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 6 12.5M12 0C5.925 0 1 4.925 1 11c0 2.653.94 5.086 2.504 6.986L2 24l5.336-3.049A10.93 10.93 0 0 0 12 22c6.075 0 11-4.925 11-11S18.075 0 12 0'></path>
 					</Svg>
 				</Message>
-
 				<Navbar_profile>
 					<img onClick={handleNavigation} src={`${img_url}`} alt='' />
 					<Drop_Down onClick={() => setToggleDropDown(!toggleDropDown)}>

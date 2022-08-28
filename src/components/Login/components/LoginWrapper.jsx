@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import bg from "../../../img/sign-up-bg.png";
+import styled from 'styled-components';
+import bg from '../../../img/sign-up-bg.png';
 export const LoginWrapper = styled.div`
 	width: 484px;
 	background-color: rgb(255, 255, 255);
@@ -7,7 +7,6 @@ export const LoginWrapper = styled.div`
 	position: absolute;
 	text-align: center;
 	margin: auto 0px auto 4%;
-
 	box-shadow: rgb(0 0 0 / 45%) 0px 2px 10px;
 	padding-bottom: 55px;
 	box-sizing: border-box;
@@ -16,7 +15,6 @@ export const LoginWrapper = styled.div`
 	z-index: 100;
 	padding-bottom: 0px;
 `;
-
 export const Overlay = styled.div`
 	background-color: rgba(0, 0, 0, 0.7);
 	height: 100vh;
@@ -27,7 +25,6 @@ export const Overlay = styled.div`
 	flex-direction: row-reverse;
 	background-image: url(${bg});
 `;
-
 export const HeadText = styled.h1`
 	color: rgb(51, 51, 51);
 	font-size: 36px;
@@ -39,69 +36,63 @@ export const HeadText = styled.h1`
 	word-break: break-word;
 	margin-bottom: 0;
 `;
-
 export const Logo = styled.div`
 	margin-top: 20px;
 `;
-
 export const Text = styled.div`
-	font-size: ${(props) => (props.bottomNormal ? "10px" : "16px")};
-	font-weight: ${(props) => (props.bottomBold ? "500" : "400")};
+	font-size: ${(props) => (props.bottomNormal ? '10px' : '16px')};
+	font-weight: ${(props) => (props.bottomBold ? '500' : '400')};
 `;
 export const Form = styled.form`
 	margin-top: 30px;
 `;
-
 export const Input = styled.input`
 	border-radius: ${(props) =>
-		props.button || props.facebook || props.google ? "30px" : "16px"};
-
+		props.button || props.facebook || props.google ? '30px' : '16px'};
 	border: ${(props) =>
 		props.button || props.facebook || props.google
-			? "0px none "
-			: "2px solid #cdcdcd"};
-
+			? '0px none '
+			: '2px solid #cdcdcd'};
 	height: ${(props) =>
-		props.button || props.facebook || props.google ? "40px" : "50px"};
+		props.button || props.facebook || props.google ? '40px' : '50px'};
 	width: 60%;
 	padding: 10px;
 	box-sizing: border-box;
 	font-size: 16px;
-	margin-top: ${(props) => (props.button ? "10px" : "5px")};
+	margin-top: ${(props) => (props.button ? '10px' : '5px')};
 	background-color: ${(props) =>
 		props.button
-			? "#E60023"
+			? '#E60023'
 			: props.facebook
-			? "#1877F2"
+			? '#1877F2'
 			: props.google
-			? "#cecece"
-			: "#fff"};
+			? '#cecece'
+			: '#fff'};
 	color: ${(props) =>
 		props.button
-			? "white"
+			? 'white'
 			: props.facebook
-			? "#fff"
+			? '#fff'
 			: props.google
-			? "#000"
-			: "#cecece"};
-	cursor: ${(props) => (props.button ? "pointer" : "auto")};
+			? '#000'
+			: '#cecece'};
+	cursor: ${(props) => (props.button ? 'pointer' : 'auto')};
 	font-weight: ${(props) =>
-		props.button || props.facebook ? "bold" : "normal"};
+		props.button || props.facebook ? 'bold' : 'normal'};
 `;
 export const Button = styled.button`
-	background-color: ${(props) => (props.signup ? "#EFEFEF" : "#E60023")};
+	background-color: ${(props) => (props.signup ? '#EFEFEF' : '#E60023')};
 	border-radius: 20px;
 	border: none;
-	color: ${(props) => (props.signup ? "#000" : "white")};
+	color: ${(props) => (props.signup ? '#000' : 'white')};
 	padding: 10px 20px;
 	font-size: 16px;
 	font-weight: bold;
 	cursor: pointer;
 	width: 100px;
 	margin: 5px;
-
 	&:hover {
-		background-color: ${(props) => (props.signup ? "#ddd" : "#a3081a;")};
+		background-color: ${(props) => (props.signup ? '#ddd' : '#a3081a;')};
 	}
 `;
 export const Business = styled.div`
@@ -117,10 +108,8 @@ export const Business = styled.div`
 	cursor: pointer;
 	margin-top: 100px;
 `;
-
 export const SignUpText = styled.div`
 	position: absolute;
-
 	color: white;
 	align-self: center;
 	margin-left: 4%;
