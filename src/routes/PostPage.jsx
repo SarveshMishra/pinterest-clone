@@ -47,7 +47,6 @@ const PostPage = () => {
 				});
 			});
 	};
-
 	useEffect(() => {
 		fetchUserProfile();
 		fetch(
@@ -70,7 +69,6 @@ const PostPage = () => {
 			})
 			.catch((err) => console.log(err));
 	}, []);
-
 	if (imageData === null) {
 		return (
 			<svg
@@ -88,11 +86,9 @@ const PostPage = () => {
 	} else if (imageData.length === 0) {
 		return <h1>Product does not exist</h1>;
 	}
-
 	const handleSave = () => {
 		let url = imageData.imageUrl;
 		setSave('Saved');
-
 		console.log(prodId);
 		let user_id = JSON.parse(localStorage.getItem('userID'));
 		let payload = {
@@ -111,7 +107,6 @@ const PostPage = () => {
 			});
 		// document.querySelector(".save").innerText = "Saved";
 	};
-
 	const handleKeyDown = (event) => {
 		if (event.key === 'Enter') {
 			dispatch(addTodo(chat), setChat(''));
@@ -156,9 +151,7 @@ const PostPage = () => {
 						<div className='icon_collection'>
 							<div className='icon_collection_left'>
 								<img src={more_icon} alt='' />
-
 								<img onClick={downloadImage} src={upload_icon} alt='' />
-
 								<img onClick={copyImageUrlToClipboard} src={copy} alt='' />
 							</div>
 							<div className='icon_collection_rigth'>
@@ -171,16 +164,13 @@ const PostPage = () => {
 								</div>
 							</div>
 						</div>
-
 						<div className='post_info'>
 							<div className='owner_post'>
 								<h3>Uploaded by</h3>
 								<h3 className='owner_name'>{imageData.uploadUser}</h3>
 							</div>
-
 							<h1>{imageData.imageDescription}</h1>
 							<p>{imageData.users_biography}</p>
-
 							<div className='post_follow_section'>
 								<div className='flex'>
 									<div>
@@ -190,7 +180,6 @@ const PostPage = () => {
 											className='channel_image'
 										/>
 									</div>
-
 									<div>
 										<p>{imageData.uploadUser}</p>
 										<p>{imageData.total_photos} Total Photos</p>
@@ -205,16 +194,13 @@ const PostPage = () => {
 									<div className='follow_div'>Follow</div>
 								</a>
 							</div>
-
 							<div className='profile_collection'>
 								<h4>Comments</h4>
 								<img src={down_arrow} alt='' className='down_hover' />
 							</div>
 						</div>
-
 						<div className='comments_section'>
 							<p>Share feedback, ask a question or give a high five</p>
-
 							<div className='commets_section2'>
 								<div>
 									<img
@@ -223,7 +209,6 @@ const PostPage = () => {
 										className='channel_image2'
 									/>
 								</div>
-
 								<div className='chat_input'>
 									<input
 										type='text'
@@ -236,7 +221,6 @@ const PostPage = () => {
 									<img src={loggedUserData.userProfilePic} alt='' />
 								</div>
 							</div>
-
 							<div className='chat_main'>
 								{list_state.map((ele) => {
 									return (
@@ -255,7 +239,6 @@ const PostPage = () => {
 						</div>
 					</div>
 				</div>
-
 				<div className='post_bottom'>
 					<h3>More like this</h3>
 					<UserHomePage />

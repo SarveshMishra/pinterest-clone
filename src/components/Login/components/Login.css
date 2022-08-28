@@ -1,7 +1,7 @@
 .facebook-button {
 	border-radius: 30px;
-	border: "0px none ";
-	height: "40px";
+	border: '0px none ';
+	height: '40px';
 	width: 60%;
 	padding: 10px;
 	box-sizing: border-box;
@@ -9,12 +9,12 @@
 	background-color: #1877f2;
 	color: white;
 	cursor: pointer;
-	font-weight: "bold";
+	font-weight: 'bold';
 }
 .google-button {
 	border-radius: 30px;
-	border: "0px none ";
-	height: "40px";
+	border: '0px none ';
+	height: '40px';
 	width: 60%;
 	padding: 10px;
 	box-sizing: border-box;
@@ -22,5 +22,5 @@
 	background-color: #fafafa;
 	color: red;
 	cursor: pointer;
-	font-weight: "bold";
+	font-weight: 'bold';
 }

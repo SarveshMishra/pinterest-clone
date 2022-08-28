@@ -1,7 +1,6 @@
-import { LOG_IN, LOG_OUT } from "./action";
-
+import { LOG_IN, LOG_OUT } from './action';
 const initState = {
-	isLogIn: "false",
+	isLogIn: 'false',
 };
 export const globalReducer = (state = initState, action) => {
 	switch (action.type) {

@@ -32,7 +32,6 @@ nav {
 	align-items: center;
 	justify-self: space-between;
 }
-
 .link-list {
 	display: flex;
 	flex-direction: row;
@@ -43,7 +42,6 @@ nav {
 	list-style: none;
 	padding: 5% 2%;
 }
-
 .link a {
 	color: black;
 	text-decoration: none;
@@ -73,12 +71,10 @@ nav {
 	z-index: 3;
 	position: relative;
 }
-
 .fade {
 	animation-name: fadeUP, move;
 	animation-duration: 1.5s;
 }
-
 @keyframes fadeUP {
 	from {
 		opacity: 1;
@@ -96,17 +92,14 @@ nav {
 	}
 }
 /* Slideshow */
-
 .slideshow {
 	margin: 0 auto;
 	overflow: hidden;
 	max-width: 1000px;
 }
-
 .slideshowSlider {
 	white-space: nowrap;
 }
-
 .slide {
 	display: inline-block;
 	text-align: center;
@@ -116,41 +109,31 @@ nav {
 	animation-duration: 1.5s;
 	font-size: 60px;
 }
-
 /* Buttons */
-
 .slideshowDots {
 	text-align: center;
 }
-
 .slideshowDot {
 	display: inline-block;
 	height: 10px;
 	width: 10px;
 	border-radius: 50%;
-
 	cursor: pointer;
 	margin: 15px 7px 0px;
-
 	background-color: #c4c4c4;
 }
-
 .slideshowDot.first {
 	background-color: #c28b00;
 }
-
 .slideshowDot.second {
 	background-color: #0076d3;
 }
-
 .slideshowDot.third {
 	background-color: #518c7b;
 }
-
 .slideshowDot.fourth {
 	background-color: #507a57;
 }
-
 /* Grid */
 #homepage-grid {
 	display: flex;
@@ -162,16 +145,14 @@ nav {
 	height: 90vh;
 	z-index: -1;
 }
-#homepage-grid div{
+#homepage-grid div {
 	width: 100%;
-	
 }
 .pulse {
 	width: 200px;
 	height: 100%;
 	margin: 0 auto 0;
 }
-
 .pulse-button {
 	position: relative;
 	top: 50%;
@@ -192,7 +173,6 @@ nav {
 .pulse-button:hover {
 	-webkit-animation: none;
 }
-
 @-webkit-keyframes pulse {
 	0% {
 		@include transform(scale(0.9));
@@ -211,12 +191,9 @@ nav {
 	height: 50px;
 	margin-top: 10px;
 }
-.overlay-container{
+.overlay-container {
 	width: 90%;
 	height: 90%;
 	position: absolute;
-	right: 5%
-	
-	
-	
+	right: 5%;
 }

@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { useSelector } from 'react-redux';
 import { Homepage } from './routes/Homepage';
 import { User_HomePage } from './routes/User_HomePage';

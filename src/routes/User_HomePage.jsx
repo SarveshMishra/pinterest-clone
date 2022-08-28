@@ -10,7 +10,6 @@ import constant from '../constant';
 export const User_HomePage = () => {
 	const dispatch = useDispatch();
 	const userData = useDispatch();
-
 	useEffect(() => {
 		fetchUserProfile();
 	}, []);
@@ -27,7 +26,6 @@ export const User_HomePage = () => {
 				localStorage.setItem('userData', JSON.stringify(data.user));
 			});
 	};
-
 	return (
 		<div>
 			<div>

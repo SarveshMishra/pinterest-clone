@@ -1,10 +1,10 @@
- .save_main{
-     width: 80%;
-     height: auto;
-     margin: 0 auto;
- }
- .save_div{
-     display: grid;
-     grid-template-columns: repeat(4,1fr);
-     gap: 20px;
- }
+.save_main {
+	width: 80%;
+	height: auto;
+	margin: 0 auto;
+}
+.save_div {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+}
