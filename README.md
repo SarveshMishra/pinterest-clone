@@ -2,6 +2,8 @@
 
 “It’s a project for educational purpose only and not commercial purpose”
 
+[Pinterest-clone](https://pinterest-clone.pages.dev/)
+
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b1bbb40138ea4f628aee5569d9875f5e)](https://www.codacy.com/gh/SarveshMishra/pinterest-clone/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SarveshMishra/pinterest-clone&amp;utm_campaign=Badge_Grade)
 
 # Pinterest-clone
